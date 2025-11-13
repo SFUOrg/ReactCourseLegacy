@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conditional Rendering - React Fundamentals</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Conditional Rendering</h1>
+        
+        <div class="theory">
+            <h2>Understanding Conditional Rendering</h2>
+            <p>Conditional rendering in React works the same way conditions work in JavaScript. You can use JavaScript operators like if or the ternary operator to create elements representing the current state, and let React update the UI to match them.</p>
+            <p>There are several ways to conditionally render content in React:
+            <ul>
+                <li>Using if statements in the render method</li>
+                <li>Using inline conditional with the ternary operator</li>
+                <li>Element variables</li>
+                <li>Inline if with logical && operator</li>
+            </ul></p>
+            <p>React evaluates conditions and only renders the elements that should be displayed based on the current state.</p>
+        </div>
+        
+        <div class="example">
+            <h2>Example: Conditional Rendering with if-else</h2>
+            <pre><code>function Greeting(props) {
+  const isLoggedIn = props.isLoggedIn;
+  
+  if (isLoggedIn) {
+    return &lt;h1&gt;Welcome back!&lt;/h1&gt;;
+  }
+  return &lt;h1&gt;Please sign up.&lt;/h1&gt;;
+}</code></pre>
+        </div>
+        
+        <div class="example">
+            <h2>Example: Conditional Rendering with Ternary Operator</h2>
+            <pre><code>function Greeting(props) {
+  const isLoggedIn = props.isLoggedIn;
+  
+  return (
+    &lt;div&gt;
+      {isLoggedIn ? (
+        &lt;h1&gt;Welcome back!&lt;/h1&gt;
+      ) : (
+        &lt;h1&gt;Please sign up.&lt;/h1&gt;
+      )}
+    &lt;/div&gt;
+  );
+}</code></pre>
+        </div>
+        
+        <div class="example">
+            <h2>Example: Conditional Rendering with Logical &&</h2>
+            <pre><code>function Mailbox(props) {
+  const unreadMessages = props.unreadMessages;
+  
+  return (
+    &lt;div&gt;
+      &lt;h1&gt;Hello!&lt;/h1&gt;
+      {unreadMessages.length > 0 && 
+        &lt;h2&gt;
+          You have {unreadMessages.length} unread messages.
+        &lt;/h2&gt;
+      }
+    &lt;/div&gt;
+  );
+}</code></pre>
+        </div>
+        
+        <div class="exercise">
+            <h2>Interactive Exercise</h2>
+            <p>Create a functional React component called "UserProfile" that accepts an "isLoggedIn" prop. If the user is logged in, display a welcome message with the user's name (passed as a name prop). If the user is not logged in, display a message prompting them to log in. Use conditional rendering to achieve this.</p>
+            
+            <label for="answer">Your Component Code:</label>
+            <textarea id="answer" rows="10" placeholder="function UserProfile(props) {
+  // Check if user is logged in
+  if (props.isLoggedIn) {
+    // Return welcome message with name
+    return &lt;h2&gt;Welcome back, {props.name}!&lt;/h2&gt;;
+  }
+  // Return login prompt
+  return &lt;h2&gt;Please log in to continue.&lt;/h2&gt;;
+}
+
+// Alternative with ternary:
+// return props.isLoggedIn ? 
+//   &lt;h2&gt;Welcome back, {props.name}!&lt;/h2&gt; : 
+//   &lt;h2&gt;Please log in to continue.&lt;/h2&gt;;"></textarea>
+            
+            <button onclick="checkAnswer()">Check Answer</button>
+            
+            <div id="result" class="result"></div>
+        </div>
+        
+        <div class="navigation">
+            <a href="event-handling.html">← Previous: Event Handling</a>
+            <a href="../index.html">Main Menu</a>
+            <a href="lists-and-keys.html">Next: Lists and Keys →</a>
+        </div>
+    </div>
+
+    <script>
+        function checkAnswer() {
+            const answer = document.getElementById('answer').value;
+            const resultDiv = document.getElementById('result');
+            
+            // Check if the answer contains the required elements
+            if (answer.includes('UserProfile') && 
+                (answer.includes('isLoggedIn') || answer.includes('props.isLoggedIn')) &&
+                (answer.includes('props.name') || answer.includes('{props.name}')) &&
+                (answer.includes('if') || answer.includes('?') || answer.includes('&&'))) {
+                
+                resultDiv.className = 'result success';
+                resultDiv.style.display = 'block';
+                resultDiv.innerHTML = 'Correct! You have successfully created a UserProfile component with conditional rendering.';
+            } else {
+                resultDiv.className = 'result error';
+                resultDiv.style.display = 'block';
+                resultDiv.innerHTML = 'Incorrect. Make sure your component checks isLoggedIn prop and conditionally renders content.';
+            }
+        }
+    </script>
+</body>
+</html>

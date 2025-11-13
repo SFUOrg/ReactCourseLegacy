@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms and Controlled Components - React Fundamentals</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Forms and Controlled Components</h1>
+        
+        <div class="theory">
+            <h2>Understanding Forms and Controlled Components</h2>
+            <p>In HTML, form elements such as &lt;input&gt;, &lt;textarea&gt;, and &lt;select&gt; typically maintain their own state and update it based on user input. In React, mutable state is typically kept in the state property of components, and only updated with setState().</p>
+            <p>We can combine the two by making the React state the "single source of truth". Then the React component that renders a form also controls what happens in that form on subsequent user input. An input form element whose value is controlled by React in this way is called a "controlled component".</p>
+            <p>When a user types into a controlled component, the React state updates and then the new value is passed down to the input element, ensuring the input always reflects the React state.</p>
+        </div>
+        
+        <div class="example">
+            <h2>Example: Controlled Input Component</h2>
+            <pre><code>function NameForm() {
+  const [value, setValue] = useState('');
+
+  const handleChange = (event) => {
+    setValue(event.target.value);
+  };
+
+  const handleSubmit = (event) => {
+    alert('A name was submitted: ' + value);
+    event.preventDefault();
+  };
+
+  return (
+    &lt;form onSubmit={handleSubmit}&gt;
+      &lt;label&gt;
+        Name:
+        &lt;input type="text" value={value} onChange={handleChange} /&gt;
+      &lt;/label&gt;
+      &lt;input type="submit" value="Submit" /&gt;
+    &lt;/form&gt;
+  );
+}</code></pre>
+        </div>
+        
+        <div class="example">
+            <h2>Example: Controlled Textarea Component</h2>
+            <pre><code>function EssayForm() {
+  const [value, setValue] = useState('Please write an essay about your favorite DOM element.');
+
+  const handleChange = (event) => {
+    setValue(event.target.value);
+  };
+
+  const handleSubmit = (event) => {
+    alert('An essay was submitted: ' + value);
+    event.preventDefault();
+  };
+
+  return (
+    &lt;form onSubmit={handleSubmit}&gt;
+      &lt;label&gt;
+        Essay:
+        &lt;textarea value={value} onChange={handleChange} /&gt;
+      &lt;/label&gt;
+      &lt;input type="submit" value="Submit" /&gt;
+    &lt;/form&gt;
+  );
+}</code></pre>
+        </div>
+        
+        <div class="example">
+            <h2>Example: Controlled Select Component</h2>
+            <pre><code>function FlavorForm() {
+  const [value, setValue] = useState('coconut');
+
+  const handleChange = (event) => {
+    setValue(event.target.value);
+  };
+
+  const handleSubmit = (event) => {
+    alert('Your favorite flavor is: ' + value);
+    event.preventDefault();
+  };
+
+  return (
+    &lt;form onSubmit={handleSubmit}&gt;
+      &lt;label&gt;
+        Pick your favorite flavor:
+        &lt;select value={value} onChange={handleChange}&gt;
+          &lt;option value="grapefruit"&gt;Grapefruit&lt;/option&gt;
+          &lt;option value="lime"&gt;Lime&lt;/option&gt;
+          &lt;option value="coconut"&gt;Coconut&lt;/option&gt;
+          &lt;option value="mango"&gt;Mango&lt;/option&gt;
+        &lt;/select&gt;
+      &lt;/label&gt;
+      &lt;input type="submit" value="Submit" /&gt;
+    &lt;/form&gt;
+  );
+}</code></pre>
+        </div>
+        
+        <div class="exercise">
+            <h2>Interactive Exercise</h2>
+            <p>Create a functional React component called "ContactForm" that has two controlled inputs: one for "name" and one for "email". The form should have a submit button. When the form is submitted, it should display an alert showing the entered name and email. Use state to control the input values.</p>
+            
+            <label for="answer">Your Component Code:</label>
+            <textarea id="answer" rows="15" placeholder="import { useState } from 'react';
+
+function ContactForm() {
+  // Initialize state for name and email
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+
+  // Handle name input change
+  const handleNameChange = (event) => {
+    setName(event.target.value);
+  };
+
+  // Handle email input change
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
+  };
+
+  // Handle form submission
+  const handleSubmit = (event) => {
+    event.preventDefault(); // Prevent default form submission
+    // Show alert with name and email
+    alert(`Name: ${name}, Email: ${email}`);
+  };
+
+  return (
+    &lt;form onSubmit={handleSubmit}&gt;
+      &lt;div&gt;
+        &lt;label&gt;
+          Name:
+          &lt;input 
+            type="text" 
+            value={name} 
+            onChange={handleNameChange} 
+          /&gt;
+        &lt;/label&gt;
+      &lt;/div&gt;
+      &lt;div&gt;
+        &lt;label&gt;
+          Email:
+          &lt;input 
+            type="email" 
+            value={email} 
+            onChange={handleEmailChange} 
+          /&gt;
+        &lt;/label&gt;
+      &lt;/div&gt;
+      &lt;button type="submit"&gt;Submit&lt;/button&gt;
+    &lt;/form&gt;
+  );
+}"></textarea>
+            
+            <button onclick="checkAnswer()">Check Answer</button>
+            
+            <div id="result" class="result"></div>
+        </div>
+        
+        <div class="navigation">
+            <a href="lists-and-keys.html">← Previous: Lists and Keys</a>
+            <a href="../index.html">Main Menu</a>
+            <a href="lifecycle-hooks.html">Next: Lifecycle Methods and Hooks →</a>
+        </div>
+    </div>
+
+    <script>
+        function checkAnswer() {
+            const answer = document.getElementById('answer').value;
+            const resultDiv = document.getElementById('result');
+            
+            // Check if the answer contains the required elements
+            if (answer.includes('ContactForm') && 
+                answer.includes('useState') &&
+                answer.includes('name') &&
+                answer.includes('email') &&
+                answer.includes('value={') &&
+                answer.includes('onChange') &&
+                answer.includes('handleSubmit') &&
+                answer.includes('event.preventDefault') &&
+                answer.includes('alert')) {
+                
+                resultDiv.className = 'result success';
+                resultDiv.style.display = 'block';
+                resultDiv.innerHTML = 'Correct! You have successfully created a ContactForm component with controlled inputs.';
+            } else {
+                resultDiv.className = 'result error';
+                resultDiv.style.display = 'block';
+                resultDiv.innerHTML = 'Incorrect. Make sure your component uses controlled inputs with state and handles submission.';
+            }
+        }
+    </script>
+</body>
+</html>

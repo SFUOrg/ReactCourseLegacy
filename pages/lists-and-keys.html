@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lists and Keys - React Fundamentals</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Lists and Keys</h1>
+        
+        <div class="theory">
+            <h2>Understanding Lists and Keys in React</h2>
+            <p>Rendering multiple components in React is typically done using the Array.map() method. When creating lists of elements in React, each item in the list needs a unique "key" prop. Keys help React identify which items have changed, are added, or are removed.</p>
+            <p>Keys should be given to the elements inside the array.map() call. The best way to pick a key is to use a string that uniquely identifies a list item among its siblings. Most often you would use IDs from your data as keys.</p>
+            <p>If you don't have stable IDs for rendered items, you may use the item index as a key as a last resort. However, this approach may cause issues if the items can reorder, so it's not recommended if the order of items may change.</p>
+        </div>
+        
+        <div class="example">
+            <h2>Example: Rendering a List of Items</h2>
+            <pre><code>function NumberList(props) {
+  const numbers = props.numbers;
+  const listItems = numbers.map((number) =>
+    &lt;li key={number.toString()}&gt;
+      {number}
+    &lt;/li&gt;
+  );
+  return (
+    &lt;ul&gt;{listItems}&lt;/ul&gt;
+  );
+}
+
+// Usage: &lt;NumberList numbers={[1, 2, 3, 4, 5]} /&gt;</code></pre>
+        </div>
+        
+        <div class="example">
+            <h2>Example: Using Unique IDs as Keys</h2>
+            <pre><code>function TodoList(props) {
+  const todos = props.todos;
+  return (
+    &lt;ul&gt;
+      {todos.map((todo) =>
+        &lt;li key={todo.id}&gt;
+          {todo.text}
+        &lt;/li&gt;
+      )}
+    &lt;/ul&gt;
+  );
+}
+
+// Usage: 
+// const todos = [
+//   { id: 1, text: 'Learn React' },
+//   { id: 2, text: 'Build an app' }
+// ];
+// &lt;TodoList todos={todos} /&gt;</code></pre>
+        </div>
+        
+        <div class="example">
+            <h2>Example: Rendering a List with Conditional Content</h2>
+            <pre><code>function ShoppingList(props) {
+  return (
+    &lt;ul&gt;
+      {props.items.map((item) => (
+        &lt;li key={item.id}&gt;
+          {item.purchased ? 
+            &lt;s&gt;{item.name}&lt;/s&gt; : 
+            &lt;span&gt;{item.name}&lt;/span&gt;
+          }
+        &lt;/li&gt;
+      ))}
+    &lt;/ul&gt;
+  );
+}</code></pre>
+        </div>
+        
+        <div class="exercise">
+            <h2>Interactive Exercise</h2>
+            <p>Create a functional React component called "TaskList" that accepts a "tasks" prop (an array of task objects). Each task object has an "id" and "text" property. Render a list of tasks where completed tasks (tasks with a "completed" property set to true) are shown with a strikethrough, and incomplete tasks are shown normally. Make sure to use the task id as the key.</p>
+            
+            <label for="answer">Your Component Code:</label>
+            <textarea id="answer" rows="12" placeholder="function TaskList(props) {
+  return (
+    &lt;ul&gt;
+      {props.tasks.map((task) => (
+        &lt;li key={task.id}&gt;
+          {/* Check if task is completed */}
+          {task.completed ? 
+            &lt;s&gt;{task.text}&lt;/s&gt; : 
+            &lt;span&gt;{task.text}&lt;/span&gt;
+          }
+        &lt;/li&gt;
+      ))}
+    &lt;/ul&gt;
+  );
+}
+
+// Example usage:
+// const tasks = [
+//   { id: 1, text: 'Learn React', completed: true },
+//   { id: 2, text: 'Build a project', completed: false }
+// ];
+// &lt;TaskList tasks={tasks} /&gt;"></textarea>
+            
+            <button onclick="checkAnswer()">Check Answer</button>
+            
+            <div id="result" class="result"></div>
+        </div>
+        
+        <div class="navigation">
+            <a href="conditional-rendering.html">← Previous: Conditional Rendering</a>
+            <a href="../index.html">Main Menu</a>
+            <a href="forms-and-controlled.html">Next: Forms and Controlled Components →</a>
+        </div>
+    </div>
+
+    <script>
+        function checkAnswer() {
+            const answer = document.getElementById('answer').value;
+            const resultDiv = document.getElementById('result');
+            
+            // Check if the answer contains the required elements
+            if (answer.includes('TaskList') && 
+                answer.includes('props.tasks') &&
+                answer.includes('map') &&
+                answer.includes('key') &&
+                (answer.includes('task.id') || answer.includes('{task.id}')) &&
+                (answer.includes('task.completed') || answer.includes('{task.completed}')) &&
+                (answer.includes('<s>') || answer.includes('strikethrough') || answer.includes('s&gt;'))) {
+                
+                resultDiv.className = 'result success';
+                resultDiv.style.display = 'block';
+                resultDiv.innerHTML = 'Correct! You have successfully created a TaskList component using lists and keys.';
+            } else {
+                resultDiv.className = 'result error';
+                resultDiv.style.display = 'block';
+                resultDiv.innerHTML = 'Incorrect. Make sure your component maps through tasks and uses keys and conditional rendering.';
+            }
+        }
+    </script>
+</body>
+</html>

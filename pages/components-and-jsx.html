@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Components and JSX - React Fundamentals</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Components and JSX</h1>
+        
+        <div class="theory">
+            <h2>Understanding Components and JSX</h2>
+            <p>React components are independent and reusable bits of code that describe a part of the user interface. Components can be thought of as JavaScript functions that receive inputs (called props) and return React elements describing what should appear on the screen.</p>
+            <p>JSX stands for JavaScript XML and allows us to write HTML-like code in our JavaScript files. It is a syntax extension for JavaScript that looks similar to HTML but is transformed into regular JavaScript during the build process.</p>
+            <p>Components can be either functional (stateless) or class-based (stateful). Functional components are simpler and are preferred for components that only need to render UI based on props.</p>
+        </div>
+        
+        <div class="example">
+            <h2>Example: Creating a Simple Component</h2>
+            <pre><code>function Welcome(props) {
+  return &lt;h1&gt;Hello, {props.name}!&lt;/h1&gt;;
+}
+
+// Using the component
+const element = &lt;Welcome name="Sarah" /&gt;;
+
+// Renders: &lt;h1&gt;Hello, Sarah!&lt;/h1&gt;</code></pre>
+        </div>
+        
+        <div class="example">
+            <h2>JSX Features</h2>
+            <p>JSX allows embedding expressions in curly braces:</p>
+            <pre><code>function FormatName(user) {
+  return &lt;h1&gt;Hello, {user.firstName + ' ' + user.lastName}!&lt;/h1&gt;;
+}</code></pre>
+        </div>
+        
+        <div class="exercise">
+            <h2>Interactive Exercise</h2>
+            <p>Write JSX code that creates a React component called "Product" which takes "name" and "price" as props and displays them in a formatted string like "Product: Laptop - $999".</p>
+            <p>For example, if the component is used as &lt;Product name="Laptop" price="999" /&gt;, it should render "Product: Laptop - $999".</p>
+            
+            <label for="answer">Your Component Code:</label>
+            <textarea id="answer" rows="6" placeholder="function Product(props) {
+  // Your code here
+  return &lt;div&gt;...&lt;/div&gt;;
+}"></textarea>
+            
+            <button onclick="checkAnswer()">Check Answer</button>
+            
+            <div id="result" class="result"></div>
+        </div>
+        
+        <div class="navigation">
+            <a href="../index.html">Main Menu</a>
+            <a href="props-and-state.html">Next: Props and State →</a>
+        </div>
+    </div>
+
+    <script>
+        function checkAnswer() {
+            const answer = document.getElementById('answer').value;
+            const resultDiv = document.getElementById('result');
+            
+            // Check if the answer contains the required elements
+            if (answer.includes('Product') && 
+                (answer.includes('props.name') || answer.includes('props[\'name\']') || answer.includes('{props.name}')) &&
+                (answer.includes('props.price') || answer.includes('props[\'price\']') || answer.includes('{props.price}')) &&
+                answer.includes('return') &&
+                (answer.includes('Product:') || answer.includes('product:'))) {
+                
+                resultDiv.className = 'result success';
+                resultDiv.style.display = 'block';
+                resultDiv.innerHTML = 'Correct! You have successfully created a Product component that renders name and price.';
+            } else {
+                resultDiv.className = 'result error';
+                resultDiv.style.display = 'block';
+                resultDiv.innerHTML = 'Incorrect. Make sure your component accepts props and returns the formatted string.';
+            }
+        }
+    </script>
+</body>
+</html>

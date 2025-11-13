@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Props and State - React Fundamentals</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Props and State</h1>
+        
+        <div class="theory">
+            <h2>Understanding Props and State</h2>
+            <p>Props (short for properties) are how components talk to each other. They are passed from parent components to child components and are immutable - meaning they cannot be changed from within the component that receives them.</p>
+            <p>State is an object that holds data that may change over the lifetime of a component. Unlike props, state is managed within the component itself and can be updated using methods like setState in class components or useState in functional components with hooks.</p>
+            <p>Props are used to pass data down the component tree, while state is used to manage data that changes within a component.</p>
+        </div>
+        
+        <div class="example">
+            <h2>Example: Using Props</h2>
+            <pre><code>function Welcome(props) {
+  return &lt;h1&gt;Hello, {props.name}!&lt;/h1&gt;;
+}
+
+// Using the component with props
+const element = &lt;Welcome name="Sarah" /&gt;;</code></pre>
+        </div>
+        
+        <div class="example">
+            <h2>Example: Using State in Class Components</h2>
+            <pre><code>class Counter extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { count: 0 };
+  }
+
+  render() {
+    return (
+      &lt;div&gt;
+        &lt;p&gt;Count: {this.state.count}&lt;/p&gt;
+        &lt;button onClick={() => this.setState({count: this.state.count + 1})}&gt;
+          Increment
+        &lt;/button&gt;
+      &lt;/div&gt;
+    );
+  }
+}</code></pre>
+        </div>
+        
+        <div class="example">
+            <h2>Example: Using State with Hooks (Functional Components)</h2>
+            <pre><code>import { useState } from 'react';
+
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  return (
+    &lt;div&gt;
+      &lt;p&gt;Count: {count}&lt;/p&gt;
+      &lt;button onClick={() => setCount(count + 1)}&gt;
+        Increment
+      &lt;/button&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+        </div>
+        
+        <div class="exercise">
+            <h2>Interactive Exercise</h2>
+            <p>Create a functional React component called "UserProfile" that accepts two props: "name" and "age". The component should display a string like "User: John, Age: 25". Additionally, implement state to track how many times a "Like" button has been clicked, starting at 0 and incrementing with each click.</p>
+            
+            <label for="answer">Your Component Code:</label>
+            <textarea id="answer" rows="10" placeholder="import { useState } from 'react';
+
+function UserProfile(props) {
+  // Initialize state for likes
+  const [likes, setLikes] = useState(0);
+  
+  return (
+    &lt;div&gt;
+      {/* Display user info and like counter */}
+      &lt;p&gt;User: {/* name */}, Age: {/* age */}&lt;/p&gt;
+      &lt;p&gt;Likes: {likes}&lt;/p&gt;
+      &lt;button onClick={() => {/* increment likes */}}&gt;
+        Like
+      &lt;/button&gt;
+    &lt;/div&gt;
+  );
+}"></textarea>
+            
+            <button onclick="checkAnswer()">Check Answer</button>
+            
+            <div id="result" class="result"></div>
+        </div>
+        
+        <div class="navigation">
+            <a href="components-and-jsx.html">← Previous: Components and JSX</a>
+            <a href="../index.html">Main Menu</a>
+            <a href="event-handling.html">Next: Event Handling →</a>
+        </div>
+    </div>
+
+    <script>
+        function checkAnswer() {
+            const answer = document.getElementById('answer').value;
+            const resultDiv = document.getElementById('result');
+            
+            // Check if the answer contains the required elements
+            if (answer.includes('UserProfile') && 
+                answer.includes('useState') &&
+                (answer.includes('props.name') || answer.includes('props[\'name\']') || answer.includes('{props.name}')) &&
+                (answer.includes('props.age') || answer.includes('props[\'age\']') || answer.includes('{props.age}')) &&
+                answer.includes('likes') &&
+                answer.includes('setLikes') &&
+                answer.includes('onClick')) {
+                
+                resultDiv.className = 'result success';
+                resultDiv.style.display = 'block';
+                resultDiv.innerHTML = 'Correct! You have successfully created a UserProfile component using props and state.';
+            } else {
+                resultDiv.className = 'result error';
+                resultDiv.style.display = 'block';
+                resultDiv.innerHTML = 'Incorrect. Make sure your component uses props for name/age and state for likes.';
+            }
+        }
+    </script>
+</body>
+</html>

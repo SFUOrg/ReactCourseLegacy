@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lifecycle Methods and Hooks - React Fundamentals</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Lifecycle Methods and Hooks</h1>
+        
+        <div class="theory">
+            <h2>Understanding Component Lifecycle and Hooks</h2>
+            <p>In class components, lifecycle methods are special methods that get called at specific points in a component's lifecycle, such as when it mounts, updates, or unmounts. The main lifecycle methods are:</p>
+            <ul>
+                <li>componentDidMount - runs after the component is rendered to the DOM</li>
+                <li>componentDidUpdate - runs after the component updates</li>
+                <li>componentWillUnmount - runs right before the component is removed from the DOM</li>
+            </ul>
+            <p>Hooks allow you to use state and other React features in functional components. The most common hooks are:
+            <ul>
+                <li>useState - for managing state</li>
+                <li>useEffect - for performing side effects (replaces lifecycle methods)</li>
+                <li>useContext - for accessing context values</li>
+            </ul>
+            </p>
+            <p>The useEffect hook can handle the same scenarios as lifecycle methods. You can run effects after render by default, or conditionally run them when specific values change.</p>
+        </div>
+        
+        <div class="example">
+            <h2>Example: Using useEffect Hook</h2>
+            <pre><code>import { useState, useEffect } from 'react';
+
+function Example() {
+  const [count, setCount] = useState(0);
+
+  // Similar to componentDidMount and componentDidUpdate
+  useEffect(() => {
+    // Update the document title using the browser API
+    document.title = `You clicked ${count} times`;
+  });
+
+  return (
+    &lt;div&gt;
+      &lt;p&gt;You clicked {count} times&lt;/p&gt;
+      &lt;button onClick={() => setCount(count + 1)}&gt;
+        Click me
+      &lt;/button&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+        </div>
+        
+        <div class="example">
+            <h2>Example: useEffect with Dependency Array</h2>
+            <pre><code>import { useState, useEffect } from 'react';
+
+function FriendStatus(props) {
+  const [isOnline, setIsOnline] = useState(null);
+
+  useEffect(() => {
+    function handleStatusChange(status) {
+      setIsOnline(status.isOnline);
+    }
+
+    // Similar to componentDidMount
+    ChatAPI.subscribeToFriendStatus(props.friend.id, handleStatusChange);
+
+    // Similar to componentWillUnmount
+    return () => {
+      ChatAPI.unsubscribeFromFriendStatus(props.friend.id, handleStatusChange);
+    };
+  }, [props.friend.id]); // Only re-run if props.friend.id changes
+
+  if (isOnline === null) {
+    return 'Loading...';
+  }
+  return isOnline ? 'Online' : 'Offline';
+}</code></pre>
+        </div>
+        
+        <div class="example">
+            <h2>Example: Multiple useEffect Hooks</h2>
+            <pre><code>function FriendStatusWithCounter(props) {
+  const [count, setCount] = useState(0);
+  const [isOnline, setIsOnline] = useState(null);
+
+  useEffect(() => {
+    document.title = `You clicked ${count} times`;
+  }); // No dependency array - runs after every render
+
+  useEffect(() => {
+    function handleStatusChange(status) {
+      setIsOnline(status.isOnline);
+    }
+
+    ChatAPI.subscribeToFriendStatus(props.friend.id, handleStatusChange);
+    return () => {
+      ChatAPI.unsubscribeFromFriendStatus(props.friend.id, handleStatusChange);
+    };
+  }, [props.friend.id]); // Only runs when props.friend.id changes
+
+  // ... component JSX
+}</code></pre>
+        </div>
+        
+        <div class="exercise">
+            <h2>Interactive Exercise</h2>
+            <p>Create a functional React component called "Timer" that displays a counter that increments every second. Use the useEffect and useState hooks to manage the timer. The component should also clean up the interval when the component is unmounted to prevent memory leaks.</p>
+            
+            <label for="answer">Your Component Code:</label>
+            <textarea id="answer" rows="15" placeholder="import { useState, useEffect } from 'react';
+
+function Timer() {
+  const [seconds, setSeconds] = useState(0);
+  
+  useEffect(() => {
+    // Set up the interval to increment seconds
+    const interval = setInterval(() => {
+      setSeconds(prevSeconds => prevSeconds + 1);
+    }, 1000);
+    
+    // Clean up the interval when component unmounts
+    return () => {
+      clearInterval(interval);
+    };
+  }, []); // Empty dependency array means this effect runs once after mount
+
+  return (
+    &lt;div&gt;
+      &lt;h2&gt;Timer: {seconds}s&lt;/h2&gt;
+    &lt;/div&gt;
+  );
+}
+
+// The useEffect hook sets up an interval that increments the seconds state every second
+// The return function in useEffect serves as the cleanup function to clear the interval"></textarea>
+            
+            <button onclick="checkAnswer()">Check Answer</button>
+            
+            <div id="result" class="result"></div>
+        </div>
+        
+        <div class="navigation">
+            <a href="forms-and-controlled.html">← Previous: Forms and Controlled Components</a>
+            <a href="../index.html">Main Menu</a>
+        </div>
+    </div>
+
+    <script>
+        function checkAnswer() {
+            const answer = document.getElementById('answer').value;
+            const resultDiv = document.getElementById('result');
+            
+            // Check if the answer contains the required elements
+            if (answer.includes('Timer') && 
+                answer.includes('useState') &&
+                answer.includes('useEffect') &&
+                answer.includes('setSeconds') &&
+                answer.includes('setInterval') &&
+                answer.includes('clearInterval') &&
+                answer.includes('return') &&
+                answer.includes('[]')) {
+                
+                resultDiv.className = 'result success';
+                resultDiv.style.display = 'block';
+                resultDiv.innerHTML = 'Correct! You have successfully created a Timer component using useEffect for lifecycle management.';
+            } else {
+                resultDiv.className = 'result error';
+                resultDiv.style.display = 'block';
+                resultDiv.innerHTML = 'Incorrect. Make sure your component uses useEffect with setInterval and cleanup function.';
+            }
+        }
+    </script>
+</body>
+</html>

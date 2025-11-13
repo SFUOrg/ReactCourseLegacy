@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Handling - React Fundamentals</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Event Handling</h1>
+        
+        <div class="theory">
+            <h2>Understanding Event Handling in React</h2>
+            <p>Handling events in React is similar to handling events on DOM elements, but with some syntactic differences. React events are named using camelCase instead of lowercase, and you pass a function as the event handler rather than a string.</p>
+            <p>In HTML, you might write: &lt;button onclick="activateLasers()"&gt;Activate Lasers&lt;/button&gt;</p>
+            <p>In React, it would be: &lt;button onClick={activateLasers}&gt;Activate Lasers&lt;/button&gt;</p>
+            <p>Another difference is that in React you cannot return false to prevent default behavior. You must call preventDefault() explicitly.</p>
+        </div>
+        
+        <div class="example">
+            <h2>Example: Basic Event Handling</h2>
+            <pre><code>function Button() {
+  function handleClick() {
+    alert('Button was clicked!');
+  }
+
+  return (
+    &lt;button onClick={handleClick}&gt;
+      Click me
+    &lt;/button&gt;
+  );
+}</code></pre>
+        </div>
+        
+        <div class="example">
+            <h2>Example: Event Handling with Arrow Function</h2>
+            <pre><code>function ToggleButton() {
+  const [isToggleOn, setIsToggleOn] = useState(true);
+
+  return (
+    &lt;button onClick={() => setIsToggleOn(!isToggleOn)}&gt;
+      {isToggleOn ? 'ON' : 'OFF'}
+    &lt;/button&gt;
+  );
+}</code></pre>
+        </div>
+        
+        <div class="example">
+            <h2>Example: Handling Events with Parameters</h2>
+            <pre><code>function ActionButton() {
+  const [message, setMessage] = useState('');
+
+  const handleClick = (action) => {
+    setMessage(`Action performed: ${action}`);
+  };
+
+  return (
+    &lt;div&gt;
+      &lt;button onClick={() => handleClick('Save')}&gt;Save&lt;/button&gt;
+      &lt;button onClick={() => handleClick('Delete')}&gt;Delete&lt;/button&gt;
+      &lt;p&gt;{message}&lt;/p&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+        </div>
+        
+        <div class="exercise">
+            <h2>Interactive Exercise</h2>
+            <p>Create a functional React component called "Counter" that has two buttons: one to increment and one to decrement a counter. The component should start at 0 and display the current count above the buttons. Use state to manage the counter value.</p>
+            
+            <label for="answer">Your Component Code:</label>
+            <textarea id="answer" rows="12" placeholder="import { useState } from 'react';
+
+function Counter() {
+  // Initialize state for count
+  const [count, setCount] = useState(0);
+
+  // Define increment function
+  const increment = () => {
+    // Update state to increase count
+  };
+
+  // Define decrement function
+  const decrement = () => {
+    // Update state to decrease count
+  };
+
+  return (
+    &lt;div&gt;
+      {/* Display the current count */}
+      &lt;p&gt;Count: {/* display count */}&lt;/p&gt;
+      {/* Increment button */}
+      &lt;button onClick={increment}&gt;+&lt;/button&gt;
+      {/* Decrement button */}
+      &lt;button onClick={decrement}&gt;-&lt;/button&gt;
+    &lt;/div&gt;
+  );
+}"></textarea>
+            
+            <button onclick="checkAnswer()">Check Answer</button>
+            
+            <div id="result" class="result"></div>
+        </div>
+        
+        <div class="navigation">
+            <a href="props-and-state.html">← Previous: Props and State</a>
+            <a href="../index.html">Main Menu</a>
+            <a href="conditional-rendering.html">Next: Conditional Rendering →</a>
+        </div>
+    </div>
+
+    <script>
+        function checkAnswer() {
+            const answer = document.getElementById('answer').value;
+            const resultDiv = document.getElementById('result');
+            
+            // Check if the answer contains the required elements
+            if (answer.includes('Counter') && 
+                answer.includes('useState') &&
+                answer.includes('count') &&
+                answer.includes('setCount') &&
+                (answer.includes('+') || answer.includes('increment') || answer.includes('add')) &&
+                (answer.includes('-') || answer.includes('decrement') || answer.includes('subtract')) &&
+                answer.includes('onClick')) {
+                
+                resultDiv.className = 'result success';
+                resultDiv.style.display = 'block';
+                resultDiv.innerHTML = 'Correct! You have successfully created a Counter component with event handling.';
+            } else {
+                resultDiv.className = 'result error';
+                resultDiv.style.display = 'block';
+                resultDiv.innerHTML = 'Incorrect. Make sure your component uses state for count and handles increment/decrement events.';
+            }
+        }
+    </script>
+</body>
+</html>
