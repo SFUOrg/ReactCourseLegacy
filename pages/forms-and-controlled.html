@@ -6,20 +6,40 @@
     <title>Forms and Controlled Components - React Fundamentals</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-white text-gray-800">
-    <div class="container max-w-4xl mx-auto px-6 py-8">
-        <h1 class="text-4xl font-bold mb-4">Forms and Controlled Components</h1>
+<body class="bg-white">
+    <!-- Header -->
+    <header class="border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+                <img src="../asserts/logo_forms.svg" alt="CodeCraft" class="h-6 w-auto">
+                <span class="text-xl font-bold text-gray-900">CodeCraft</span>
+            </div>
+            <nav class="flex items-center space-x-6">
+                <a href="#" class="text-gray-900 hover:text-gray-700">Catalog</a>
+                <a href="#" class="text-gray-900 hover:text-gray-700">Roadmaps</a>
+                <a href="#" class="text-gray-900 hover:text-gray-700">Discussions</a>
+                <a href="#" class="text-gray-900 hover:text-gray-700">Cheatsheets</a>
+                <button class="bg-gray-100 hover:bg-gray-200 text-gray-900 px-4 py-2 rounded-md font-bold transition-colors">Sign in</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="max-w-4xl mx-auto px-6 py-8">
+        <h1 class="text-4xl font-bold text-gray-900 mb-2">Forms and Controlled Components</h1>
+        <p class="text-lg text-gray-700 mb-2">Learn how to handle form inputs and create controlled components in React.</p>
+        <div class="text-sm text-gray-600 mb-8">React Fundamentals / Forms and Controlled Components</div>
         
         <div class="theory mb-8">
-            <h2 class="text-2xl font-semibold mb-4">Understanding Forms and Controlled Components</h2>
-            <p class="mb-4 leading-relaxed">In HTML, form elements such as &lt;input&gt;, &lt;textarea&gt;, and &lt;select&gt; typically maintain their own state and update it based on user input. In React, mutable state is typically kept in the state property of components, and only updated with setState().</p>
-            <p class="mb-4 leading-relaxed">We can combine the two by making the React state the "single source of truth". Then the React component that renders a form also controls what happens in that form on subsequent user input. An input form element whose value is controlled by React in this way is called a "controlled component".</p>
-            <p class="mb-4 leading-relaxed">When a user types into a controlled component, the React state updates and then the new value is passed down to the input element, ensuring the input always reflects the React state.</p>
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">Understanding Forms and Controlled Components</h2>
+            <p class="text-gray-700 leading-relaxed mb-4">In HTML, form elements such as &lt;input&gt;, &lt;textarea&gt;, and &lt;select&gt; typically maintain their own state and update it based on user input. In React, mutable state is typically kept in the state property of components, and only updated with setState().</p>
+            <p class="text-gray-700 leading-relaxed mb-4">We can combine the two by making the React state the "single source of truth". Then the React component that renders a form also controls what happens in that form on subsequent user input. An input form element whose value is controlled by React in this way is called a "controlled component".</p>
+            <p class="text-gray-700 leading-relaxed mb-4">When a user types into a controlled component, the React state updates and then the new value is passed down to the input element, ensuring the input always reflects the React state.</p>
         </div>
         
         <div class="example mb-8">
-            <h2 class="text-2xl font-semibold mb-4">Example: Controlled Input Component</h2>
-            <pre class="bg-white border border-gray-300 rounded-lg p-4 overflow-x-auto"><code class="text-sm">function NameForm() {
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">Example: Controlled Input Component</h2>
+            <pre class="bg-white border border-gray-300 rounded-lg p-4 overflow-x-auto"><code class="text-sm text-gray-800">function NameForm() {
   const [value, setValue] = useState('');
 
   const handleChange = (event) => {
@@ -44,8 +64,8 @@
         </div>
         
         <div class="example mb-8">
-            <h2 class="text-2xl font-semibold mb-4">Example: Controlled Textarea Component</h2>
-            <pre class="bg-white border border-gray-300 rounded-lg p-4 overflow-x-auto"><code class="text-sm">function EssayForm() {
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">Example: Controlled Textarea Component</h2>
+            <pre class="bg-white border border-gray-300 rounded-lg p-4 overflow-x-auto"><code class="text-sm text-gray-800">function EssayForm() {
   const [value, setValue] = useState('Please write an essay about your favorite DOM element.');
 
   const handleChange = (event) => {
@@ -70,8 +90,8 @@
         </div>
         
         <div class="example mb-8">
-            <h2 class="text-2xl font-semibold mb-4">Example: Controlled Select Component</h2>
-            <pre class="bg-white border border-gray-300 rounded-lg p-4 overflow-x-auto"><code class="text-sm">function FlavorForm() {
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">Example: Controlled Select Component</h2>
+            <pre class="bg-white border border-gray-300 rounded-lg p-4 overflow-x-auto"><code class="text-sm text-gray-800">function FlavorForm() {
   const [value, setValue] = useState('coconut');
 
   const handleChange = (event) => {
@@ -101,11 +121,11 @@
         </div>
         
         <div class="exercise mb-8">
-            <h2 class="text-2xl font-semibold mb-4">Interactive Exercise</h2>
-            <p class="mb-4 leading-relaxed">Create a functional React component called "ContactForm" that has two controlled inputs: one for "name" and one for "email". The form should have a submit button. When the form is submitted, it should display an alert showing the entered name and email. Use state to control the input values.</p>
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">Exercise</h2>
+            <p class="text-gray-700 leading-relaxed mb-4">Create a functional React component called "ContactForm" that has two controlled inputs: one for "name" and one for "email". The form should have a submit button. When the form is submitted, it should display an alert showing the entered name and email. Use state to control the input values.</p>
             
-            <label for="answer" class="block mb-2 font-medium">Your Component Code:</label>
-            <textarea id="answer" rows="15" class="w-full border border-gray-300 rounded-lg p-4 font-mono text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="import { useState } from 'react';
+            <label for="answer" class="block text-gray-700 font-medium mb-2">Your Component Code:</label>
+            <textarea id="answer" rows="15" class="w-full border border-gray-300 rounded-lg p-4 font-mono text-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="import { useState } from 'react';
 
 function ContactForm() {
   // Initialize state for name and email
@@ -161,10 +181,10 @@ function ContactForm() {
             <div id="result" class="result mt-4 p-4 rounded-lg hidden"></div>
         </div>
         
-        <div class="navigation flex flex-col sm:flex-row gap-4 mt-8 pt-8 border-t border-gray-200">
-            <a href="lists-and-keys.html" class="text-gray-600 hover:text-gray-800 transition-colors">← Previous: Lists and Keys</a>
-            <a href="../index.html" class="text-gray-600 hover:text-gray-800 transition-colors">Main Menu</a>
-            <a href="lifecycle-hooks.html" class="text-blue-500 hover:text-blue-600 font-medium transition-colors ml-auto">Next: Lifecycle Methods and Hooks →</a>
+        <div class="navigation flex flex-row gap-4 mt-12 pt-8 border-t border-gray-200">
+            <a href="lists-and-keys.html" class="bg-gray-100 hover:bg-gray-200 text-gray-800 py-2 px-6 rounded-md transition-colors">Previous</a>
+            <a href="../index.html" class="bg-gray-100 hover:bg-gray-200 text-gray-800 py-2 px-6 rounded-md transition-colors">Back to Main Menu</a>
+            <a href="lifecycle-hooks.html" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-6 rounded-md transition-colors ml-auto">Next</a>
         </div>
     </div>
 
@@ -186,11 +206,11 @@ function ContactForm() {
                 
                 resultDiv.className = 'result success bg-green-50 border border-green-200 text-green-800';
                 resultDiv.style.display = 'block';
-                resultDiv.innerHTML = 'Correct! You have successfully created a ContactForm component with controlled inputs.';
+                resultDiv.innerHTML = '<strong>Feedback:</strong> Your solution is correct! You have successfully created a ContactForm component with controlled inputs.';
             } else {
                 resultDiv.className = 'result error bg-red-50 border border-red-200 text-red-800';
                 resultDiv.style.display = 'block';
-                resultDiv.innerHTML = 'Incorrect. Make sure your component uses controlled inputs with state and handles submission.';
+                resultDiv.innerHTML = '<strong>Feedback:</strong> Incorrect. Make sure your component uses controlled inputs with state and handles submission.';
             }
         }
     </script>
