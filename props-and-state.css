@@ -1,0 +1,183 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 3rem;
+}
+.container h1 {
+  font-weight: 700;
+  font-size: 3rem;
+}
+
+.theory {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 2rem;
+  padding: 3rem 0 1rem;
+}
+
+.text {
+  font-weight: 400;
+}
+
+.example {
+  display: flex;
+  flex-direction: column;
+}
+
+pre {
+  background-color: #2d3748;
+  border-radius: 0.5rem;
+  padding: 1.25rem;
+  overflow-x: auto;
+  margin: 0;
+  max-width: 50%;
+}
+
+code {
+  font-family: "Fira Code", "Monaco", "Inconsolata", "Consolas", monospace;
+  font-size: 0.9375rem;
+  color: #e2e8f0;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+code b {
+  color: #69b3a2;
+  font-weight: normal;
+}
+code i {
+  color: #f0b72f;
+  font-style: normal;
+}
+code u {
+  color: #80bfff;
+  text-decoration: none;
+}
+
+.exercise {
+  display: flex;
+  flex-direction: column;
+}
+.exercise label {
+  font-weight: 500;
+  color: #334155;
+  display: block;
+  margin: 2rem 0 1rem;
+}
+.exercise textarea {
+  width: 50%;
+  min-height: 200px;
+  padding: 1rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 0.5rem;
+  font-family: "Fira Code", "Monaco", "Inconsolata", "Consolas", monospace;
+  font-size: 0.9375rem;
+  background-color: #f8fafc;
+  resize: vertical;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.exercise textarea:focus {
+  outline: none;
+  border-color: #60a5fa;
+  box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.2);
+}
+.exercise textarea::-webkit-scrollbar {
+  display: none;
+}
+.exercise button {
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 1rem;
+  max-width: 10%;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+.exercise button:hover {
+  background-color: #2563eb;
+  transform: translateY(-1px);
+}
+.exercise button:active {
+  transform: translateY(0);
+}
+
+.result {
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  display: none;
+}
+.result.success {
+  background-color: #d1fae5;
+  color: #065f46;
+  border: 1px solid #a7f3d0;
+}
+.result.error {
+  background-color: #fee2e2;
+  color: #b91c1c;
+  border: 1px solid #fecaca;
+}
+
+.navigation {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e2e8f0;
+}
+.navigation a {
+  display: inline-block;
+  background: #f0f2f5;
+  color: black;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  font-weight: 500;
+  text-decoration: none;
+  text-align: center;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  cursor: pointer;
+}
+.navigation a:hover {
+  background-color: #1d4ed8;
+  color: #eff6ff;
+}
+.navigation a:active {
+  color: #1e40af;
+}
+
+.a-btn {
+  display: inline-block;
+  background: #f0f2f5;
+  color: black;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  font-weight: 500;
+  text-decoration: none;
+  text-align: center;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  cursor: pointer;
+  width: fit-content;
+  margin: 1rem 0;
+}
+
+.a-btn:hover {
+  background-color: #1d4ed8;
+  color: #eff6ff;
+}
+
+.a-btn:active {
+  color: #1e40af;
+}
+
+/*# sourceMappingURL=props-and-state.css.map */

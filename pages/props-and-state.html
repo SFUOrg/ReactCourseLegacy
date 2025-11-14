@@ -4,20 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Props and State - React Fundamentals</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../props-and-state.css">
+    <style>
+        :root {
+            --nav-height: 2.5rem;
+            --logo-size: 1.5rem;
+        }
+    </style>
 </head>
-<body>
+<body class="font-[Lexend]">
+  <header class="bg-white border-b border-gray-200 sticky top-0 z-50">
+        <div class="px-4 md:px-6 lg:px-8 py-3 md:py-4 flex items-center justify-between">
+            <div class="flex items-center gap-2 md:gap-3">
+                <img src="../assets/logo.svg"
+                     class="w-[var(--logo-size)] h-[var(--logo-size)]"
+                     alt="React Learning logo">
+                <a href="#" class="text-lg md:text-2xl font-bold hover:text-orange-300 transition cursor-pointer">React Learning</a>
+            </div>
+            
+            <nav class="hidden md:flex items-center gap-4 lg:gap-6">
+                <a href="#" class="hover:text-orange-300 transition">Tutorials</a>
+                <a href="#" class="hover:text-orange-300 transition">Community</a>
+                <a href="#" class="hover:text-orange-300 transition">Exercises</a>
+                <a href="#" class="hover:text-orange-300 transition">Resources</a>
+                <a href="#" class="bg-gray-200 px-5 md:px-7 h-[var(--nav-height)] rounded-md hover:bg-gray-300 transition flex items-center">New</a>
+                <a href="#">
+                    <img src="../assets/avatar.png" alt="Profile" class="w-[var(--nav-height)] h-[var(--nav-height)] rounded-full cursor-pointer">
+                </a>
+            </nav>
+            
+            <button class="md:hidden text-gray-800 cursor-pointer">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+    </header>
     <div class="container">
         <h1>Props and State</h1>
         
         <div class="theory">
-            <h2>Understanding Props and State</h2>
-            <p>Props (short for properties) are how components talk to each other. They are passed from parent components to child components and are immutable - meaning they cannot be changed from within the component that receives them.</p>
-            <p>State is an object that holds data that may change over the lifetime of a component. Unlike props, state is managed within the component itself and can be updated using methods like setState in class components or useState in functional components with hooks.</p>
-            <p>Props are used to pass data down the component tree, while state is used to manage data that changes within a component.</p>
+            <h2 class="title">Understanding Props and State</h2>
+            <p class="text">Props (short for properties) are how components talk to each other. They are passed from parent components to child components and are immutable - meaning they cannot be changed from within the component that receives them.</p>
+            <p class="text">State is an object that holds data that may change over the lifetime of a component. Unlike props, state is managed within the component itself and can be updated using methods like setState in class components or useState in functional components with hooks.</p>
+            <p class="text">Props are used to pass data down the component tree, while state is used to manage data that changes within a component.</p>
         </div>
         
         <div class="example">
-            <h2>Example: Using Props</h2>
+            <h2 class="title">Example: Using Props</h2>
             <pre><code>function Welcome(props) {
   return &lt;h1&gt;Hello, {props.name}!&lt;/h1&gt;;
 }
@@ -27,7 +65,7 @@ const element = &lt;Welcome name="Sarah" /&gt;;</code></pre>
         </div>
         
         <div class="example">
-            <h2>Example: Using State in Class Components</h2>
+            <h2 class="title">Example: Using State in Class Components</h2>
             <pre><code>class Counter extends React.Component {
   constructor(props) {
     super(props);
@@ -48,7 +86,7 @@ const element = &lt;Welcome name="Sarah" /&gt;;</code></pre>
         </div>
         
         <div class="example">
-            <h2>Example: Using State with Hooks (Functional Components)</h2>
+            <h2 class="title">Example: Using State with Hooks (Functional Components)</h2>
             <pre><code>import { useState } from 'react';
 
 function Counter() {
@@ -65,9 +103,9 @@ function Counter() {
 }</code></pre>
         </div>
         
-        <div class="exercise">
-            <h2>Interactive Exercise</h2>
-            <p>Create a functional React component called "UserProfile" that accepts two props: "name" and "age". The component should display a string like "User: John, Age: 25". Additionally, implement state to track how many times a "Like" button has been clicked, starting at 0 and incrementing with each click.</p>
+          <div class="exercise">
+            <h2 class="title">Interactive Exercise</h2>
+            <p class="text">Create a functional React component called "UserProfile" that accepts two props: "name" and "age". The component should display a string like "User: John, Age: 25". Additionally, implement state to track how many times a "Like" button has been clicked, starting at 0 and incrementing with each click.</p>
             
             <label for="answer">Your Component Code:</label>
             <textarea id="answer" rows="10" placeholder="import { useState } from 'react';
@@ -95,9 +133,12 @@ function UserProfile(props) {
         
         <div class="navigation">
             <a href="components-and-jsx.html">← Previous: Components and JSX</a>
-            <a href="../index.html">Main Menu</a>
             <a href="event-handling.html">Next: Event Handling →</a>
         </div>
+        <a class="a-btn" href="../index.html">Main Menu</a>
+        
+        
+        
     </div>
 
     <script>
