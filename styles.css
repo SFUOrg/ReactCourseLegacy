@@ -1,3 +1,26 @@
+:root {
+    --nav-height: 2.5rem;
+    --logo-size: 1.5rem;
+
+    --background-light: white;
+    --background-dark: oklch(21% 0.034 264.665);
+    --background-dark-secondary: oklch(27.8% 0.033 256.848);
+    --surface-light: oklch(96.7% 0.003 264.542);
+    --surface-light-hover: oklch(92.8% 0.006 264.531);
+    --surface-dark: oklch(37.3% 0.034 259.733);
+    --surface-dark-hover: oklch(44.6% 0.03 256.802);
+
+    --text-light: oklch(21% 0.034 264.665);
+    --text-light-secondary: oklch(44.6% 0.03 256.802);
+    --text-dark: white;
+    --text-dark-secondary: oklch(70.7% 0.022 261.325);
+
+    --border-light: oklch(92.8% 0.006 264.531);
+    --border-dark: oklch(37.3% 0.034 259.733);
+
+    --accent: oklch(83.7% 0.128 66.29);
+}
+
 /* Видимые стили фокуса для всех интерактивных элементов */
 a:focus-visible,
 button:focus-visible {
