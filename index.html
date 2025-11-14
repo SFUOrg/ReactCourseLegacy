@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
     <style>
         :root {
             --nav-height: 2.5rem;
@@ -22,89 +23,107 @@
                 <img src="assets/logo.svg"
                      class="w-[var(--logo-size)] h-[var(--logo-size)]"
                      alt="React Learning logo">
-                <a href="#" class="text-lg md:text-2xl font-bold hover:text-orange-300 transition cursor-pointer">React Learning</a>
+                <a href="#" class="text-lg md:text-2xl font-bold hover:text-orange-300 transition cursor-pointer" aria-label="React Learning homepage">React Learning</a>
             </div>
             
-            <nav class="hidden md:flex items-center gap-4 lg:gap-6">
+            <nav class="hidden md:flex items-center gap-4 lg:gap-6" aria-label="Main navigation">
                 <a href="#" class="hover:text-orange-300 transition">Tutorials</a>
                 <a href="#" class="hover:text-orange-300 transition">Community</a>
                 <a href="#" class="hover:text-orange-300 transition">Exercises</a>
                 <a href="#" class="hover:text-orange-300 transition">Resources</a>
-                <a href="#" class="bg-gray-200 px-5 md:px-7 h-[var(--nav-height)] rounded-md hover:bg-gray-300 transition flex items-center">New</a>
-                <a href="#">
+                <a href="#" class="bg-gray-200 px-5 md:px-7 h-[var(--nav-height)] rounded-md hover:bg-gray-300 transition flex items-center" aria-label="New content">New</a>
+                <a href="#" aria-label="User profile">
                     <img src="assets/avatar.png" alt="Profile" class="w-[var(--nav-height)] h-[var(--nav-height)] rounded-full cursor-pointer">
                 </a>
             </nav>
             
-            <button class="md:hidden text-gray-800 cursor-pointer">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <button class="md:hidden text-gray-800 cursor-pointer" 
+                    aria-label="Toggle navigation menu" 
+                    aria-expanded="false">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                 </svg>
             </button>
         </div>
     </header>
 
-    <main class="container px-4 mx-auto my-10">
+    <main id="main-content" class="container px-4 mx-auto my-10">
         <h1 class="text-4xl font-bold text-gray-900 mb-2">Welcome back, Sarah!</h1>
         <p class="text-gray-600 mb-8">Continue your learning journey with React.</p>
         
-        <section class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 md:gap-5">
-            <a href="pages/components-and-jsx.html" class="nav-card group bg-white overflow-hidden pointer flex flex-col">
-                <img src="assets/introduction-to-react.png" alt="Components and JSX" class="rounded-md w-full h-40 sm:h-50 xl:h-60 object-cover">
-                <div class="p-4 flex flex-col flex-grow">
-                    <h3 class="font-semibold text-gray-900 group-hover:text-orange-300 transition mb-2">Components and JSX</h3>
-                    <p class="text-gray-600 text-sm">Learn how to create and structure React components using JSX syntax</p>
-                </div>
-            </a>
+        <section class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 md:gap-5" aria-label="Learning modules">
+            <article aria-labelledby="title-components-jsx">
+                <a href="pages/components-and-jsx.html" class="nav-card group bg-white overflow-hidden pointer flex flex-col" aria-describedby="desc-components-jsx">
+                    <img src="assets/introduction-to-react.png" alt="Components and JSX" class="rounded-md w-full h-40 sm:h-50 xl:h-60 object-cover">
+                    <div class="p-4 flex flex-col flex-grow">
+                        <h3 id="title-components-jsx" class="font-semibold text-gray-900 group-hover:text-orange-300 transition mb-2">Components and JSX</h3>
+                        <p id="desc-components-jsx" class="text-gray-600 text-sm">Learn how to create and structure React components using JSX syntax</p>
+                    </div>
+                </a>
+            </article>
             
-            <a href="pages/props-and-state.html" class="nav-card group bg-white overflow-hidden pointer flex flex-col">
-                <img src="assets/components-and-props.png" alt="Props and State" class="rounded-md w-full h-40 sm:h-50 xl:h-60 object-cover">
-                <div class="p-4 flex flex-col flex-grow">
-                    <h3 class="font-semibold text-gray-900 group-hover:text-orange-300 transition mb-2">Props and State</h3>
-                    <p class="text-gray-600 text-sm">Understand how to pass data using props and manage component state</p>
-                </div>
-            </a>
+            <article aria-labelledby="title-props-state">
+                <a href="pages/props-and-state.html" class="nav-card group bg-white overflow-hidden pointer flex flex-col" aria-describedby="desc-props-state">
+                    <img src="assets/components-and-props.png" alt="Props and State" class="rounded-md w-full h-40 sm:h-50 xl:h-60 object-cover">
+                    <div class="p-4 flex flex-col flex-grow">
+                        <h3 id="title-props-state" class="font-semibold text-gray-900 group-hover:text-orange-300 transition mb-2">Props and State</h3>
+                        <p id="desc-props-state" class="text-gray-600 text-sm">Understand how to pass data using props and manage component state</p>
+                    </div>
+                </a>
+            </article>
             
-            <a href="pages/event-handling.html" class="nav-card group bg-white overflow-hidden pointer flex flex-col">
-                <img src="assets/state-management.png" alt="Event Handling" class="rounded-md w-full h-40 sm:h-50 xl:h-60 object-cover">
-                <div class="p-4 flex flex-col flex-grow">
-                    <h3 class="font-semibold text-gray-900 group-hover:text-orange-300 transition mb-2">Event Handling</h3>
-                    <p class="text-gray-600 text-sm">Handle user interactions and events in React components</p>
-                </div>
-            </a>
+            <article aria-labelledby="title-event-handling">
+                <a href="pages/event-handling.html" class="nav-card group bg-white overflow-hidden pointer flex flex-col" aria-describedby="desc-event-handling">
+                    <img src="assets/state-management.png" alt="Event Handling" class="rounded-md w-full h-40 sm:h-50 xl:h-60 object-cover">
+                    <div class="p-4 flex flex-col flex-grow">
+                        <h3 id="title-event-handling" class="font-semibold text-gray-900 group-hover:text-orange-300 transition mb-2">Event Handling</h3>
+                        <p id="desc-event-handling" class="text-gray-600 text-sm">Handle user interactions and events in React components</p>
+                    </div>
+                </a>
+            </article>
             
-            <a href="pages/conditional-rendering.html" class="nav-card group bg-white overflow-hidden pointer flex flex-col">
-                <img src="assets/event-handling.png" alt="Conditional Rendering" class="rounded-md w-full h-40 sm:h-50 xl:h-60 object-cover">
-                <div class="p-4 flex flex-col flex-grow">
-                    <h3 class="font-semibold text-gray-900 group-hover:text-orange-300 transition mb-2">Conditional Rendering</h3>
-                    <p class="text-gray-600 text-sm">Render different elements based on conditions in React</p>
-                </div>
-            </a>
+            <article aria-labelledby="title-conditional-rendering">
+                <a href="pages/conditional-rendering.html" class="nav-card group bg-white overflow-hidden pointer flex flex-col" aria-describedby="desc-conditional-rendering">
+                    <img src="assets/event-handling.png" alt="Conditional Rendering" class="rounded-md w-full h-40 sm:h-50 xl:h-60 object-cover">
+                    <div class="p-4 flex flex-col flex-grow">
+                        <h3 id="title-conditional-rendering" class="font-semibold text-gray-900 group-hover:text-orange-300 transition mb-2">Conditional Rendering</h3>
+                        <p id="desc-conditional-rendering" class="text-gray-600 text-sm">Render different elements based on conditions in React</p>
+                    </div>
+                </a>
+            </article>
             
-            <a href="pages/lists-and-keys.html" class="nav-card group bg-white overflow-hidden pointer flex flex-col">
-                <img src="assets/conditional-rendering.png" alt="Lists and Keys" class="rounded-md w-full h-40 sm:h-50 xl:h-60 object-cover">
-                <div class="p-4 flex flex-col flex-grow">
-                    <h3 class="font-semibold text-gray-900 group-hover:text-orange-300 transition mb-2">Lists and Keys</h3>
-                    <p class="text-gray-600 text-sm">Create dynamic lists and properly use keys in React</p>
-                </div>
-            </a>
+            <article aria-labelledby="title-lists-keys">
+                <a href="pages/lists-and-keys.html" class="nav-card group bg-white overflow-hidden pointer flex flex-col" aria-describedby="desc-lists-keys">
+                    <img src="assets/conditional-rendering.png" alt="Lists and Keys" class="rounded-md w-full h-40 sm:h-50 xl:h-60 object-cover">
+                    <div class="p-4 flex flex-col flex-grow">
+                        <h3 id="title-lists-keys" class="font-semibold text-gray-900 group-hover:text-orange-300 transition mb-2">Lists and Keys</h3>
+                        <p id="desc-lists-keys" class="text-gray-600 text-sm">Create dynamic lists and properly use keys in React</p>
+                    </div>
+                </a>
+            </article>
             
-            <a href="pages/forms-and-controlled.html" class="nav-card group bg-white overflow-hidden pointer flex flex-col">
-                <img src="assets/lists-and-keys.png" alt="Forms and Controlled Components" class="rounded-md w-full h-40 sm:h-50 xl:h-60 object-cover">
-                <div class="p-4 flex flex-col flex-grow">
-                    <h3 class="font-semibold text-gray-900 group-hover:text-orange-300 transition mb-2">Forms and Controlled Components</h3>
-                    <p class="text-gray-600 text-sm">Handle form inputs and create controlled components</p>
-                </div>
-            </a>
+            <article aria-labelledby="title-forms-controlled">
+                <a href="pages/forms-and-controlled.html" class="nav-card group bg-white overflow-hidden pointer flex flex-col" aria-describedby="desc-forms-controlled">
+                    <img src="assets/lists-and-keys.png" alt="Forms and Controlled Components" class="rounded-md w-full h-40 sm:h-50 xl:h-60 object-cover">
+                    <div class="p-4 flex flex-col flex-grow">
+                        <h3 id="title-forms-controlled" class="font-semibold text-gray-900 group-hover:text-orange-300 transition mb-2">Forms and Controlled Components</h3>
+                        <p id="desc-forms-controlled" class="text-gray-600 text-sm">Handle form inputs and create controlled components</p>
+                    </div>
+                </a>
+            </article>
             
-            <a href="pages/lifecycle-hooks.html" class="nav-card group bg-white overflow-hidden pointer flex flex-col">
-                <img src="assets/forms-in-react.png" alt="Lifecycle Methods and Hooks" class="rounded-md w-full h-40 sm:h-50 xl:h-60 object-cover">
-                <div class="p-4 flex flex-col flex-grow">
-                    <h3 class="font-semibold text-gray-900 group-hover:text-orange-300 transition mb-2">Lifecycle Methods and Hooks</h3>
-                    <p class="text-gray-600 text-sm">Manage component lifecycle and use React Hooks</p>
-                </div>
-            </a>
+            <article aria-labelledby="title-lifecycle-hooks">
+                <a href="pages/lifecycle-hooks.html" class="nav-card group bg-white overflow-hidden pointer flex flex-col" aria-describedby="desc-lifecycle-hooks">
+                    <img src="assets/forms-in-react.png" alt="Lifecycle Methods and Hooks" class="rounded-md w-full h-40 sm:h-50 xl:h-60 object-cover">
+                    <div class="p-4 flex flex-col flex-grow">
+                        <h3 id="title-lifecycle-hooks" class="font-semibold text-gray-900 group-hover:text-orange-300 transition mb-2">Lifecycle Methods and Hooks</h3>
+                        <p id="desc-lifecycle-hooks" class="text-gray-600 text-sm">Manage component lifecycle and use React Hooks</p>
+                    </div>
+                </a>
+            </article>
         </section>
     </main>
+    
+    <script src="keyboard-navigation.js"></script>
 </body>
 </html>
