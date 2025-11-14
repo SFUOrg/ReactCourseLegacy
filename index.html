@@ -4,56 +4,107 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>React Fundamentals Learning Platform</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --nav-height: 2.5rem;
+            --logo-size: 1.5rem;
+        }
+    </style>
 </head>
-<body>
-    <div class="container">
-        <h1>React Fundamentals Learning Platform</h1>
-        
-        <div class="description">
-            <p>Master the fundamentals of React with these 7 interactive learning modules. 
-            Each module contains theory, examples, and interactive exercises to test your knowledge.</p>
+<body class="font-[Lexend]">
+    <header class="bg-white border-b border-gray-200 sticky top-0 z-50">
+        <div class="px-4 md:px-6 lg:px-8 py-3 md:py-4 flex items-center justify-between">
+            <div class="flex items-center gap-2 md:gap-3">
+                <img src="assets/logo.svg"
+                     class="w-[var(--logo-size)] h-[var(--logo-size)]"
+                     alt="React Learning logo">
+                <a href="#" class="text-lg md:text-2xl font-bold hover:text-orange-300 transition cursor-pointer">React Learning</a>
+            </div>
+            
+            <nav class="hidden md:flex items-center gap-4 lg:gap-6">
+                <a href="#" class="hover:text-orange-300 transition">Tutorials</a>
+                <a href="#" class="hover:text-orange-300 transition">Community</a>
+                <a href="#" class="hover:text-orange-300 transition">Exercises</a>
+                <a href="#" class="hover:text-orange-300 transition">Resources</a>
+                <a href="#" class="bg-gray-200 px-5 md:px-7 h-[var(--nav-height)] rounded-md hover:bg-gray-300 transition flex items-center">New</a>
+                <a href="#">
+                    <img src="assets/avatar.png" alt="Profile" class="w-[var(--nav-height)] h-[var(--nav-height)] rounded-full cursor-pointer">
+                </a>
+            </nav>
+            
+            <button class="md:hidden text-gray-800 cursor-pointer">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
         </div>
+    </header>
+
+    <main class="container px-4 mx-auto my-10">
+        <h1 class="text-4xl font-bold text-gray-900 mb-2">Welcome back, Sarah!</h1>
+        <p class="text-gray-600 mb-8">Continue your learning journey with React.</p>
         
-        <div class="nav-grid">
-            <div class="nav-card">
-                <a href="pages/components-and-jsx.html">Components and JSX</a>
-                <p>Learn how to create and structure React components using JSX syntax</p>
-            </div>
+        <section class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 md:gap-5">
+            <a href="pages/components-and-jsx.html" class="nav-card group bg-white overflow-hidden pointer flex flex-col">
+                <img src="assets/introduction-to-react.png" alt="Components and JSX" class="rounded-md w-full h-40 sm:h-50 xl:h-60 object-cover">
+                <div class="p-4 flex flex-col flex-grow">
+                    <h3 class="font-semibold text-gray-900 group-hover:text-orange-300 transition mb-2">Components and JSX</h3>
+                    <p class="text-gray-600 text-sm">Learn how to create and structure React components using JSX syntax</p>
+                </div>
+            </a>
             
-            <div class="nav-card">
-                <a href="pages/props-and-state.html">Props and State</a>
-                <p>Understand how to pass data using props and manage component state</p>
-            </div>
+            <a href="pages/props-and-state.html" class="nav-card group bg-white overflow-hidden pointer flex flex-col">
+                <img src="assets/components-and-props.png" alt="Props and State" class="rounded-md w-full h-40 sm:h-50 xl:h-60 object-cover">
+                <div class="p-4 flex flex-col flex-grow">
+                    <h3 class="font-semibold text-gray-900 group-hover:text-orange-300 transition mb-2">Props and State</h3>
+                    <p class="text-gray-600 text-sm">Understand how to pass data using props and manage component state</p>
+                </div>
+            </a>
             
-            <div class="nav-card">
-                <a href="pages/event-handling.html">Event Handling</a>
-                <p>Handle user interactions and events in React components</p>
-            </div>
+            <a href="pages/event-handling.html" class="nav-card group bg-white overflow-hidden pointer flex flex-col">
+                <img src="assets/state-management.png" alt="Event Handling" class="rounded-md w-full h-40 sm:h-50 xl:h-60 object-cover">
+                <div class="p-4 flex flex-col flex-grow">
+                    <h3 class="font-semibold text-gray-900 group-hover:text-orange-300 transition mb-2">Event Handling</h3>
+                    <p class="text-gray-600 text-sm">Handle user interactions and events in React components</p>
+                </div>
+            </a>
             
-            <div class="nav-card">
-                <a href="pages/conditional-rendering.html">Conditional Rendering</a>
-                <p>Render different elements based on conditions in React</p>
-            </div>
+            <a href="pages/conditional-rendering.html" class="nav-card group bg-white overflow-hidden pointer flex flex-col">
+                <img src="assets/event-handling.png" alt="Conditional Rendering" class="rounded-md w-full h-40 sm:h-50 xl:h-60 object-cover">
+                <div class="p-4 flex flex-col flex-grow">
+                    <h3 class="font-semibold text-gray-900 group-hover:text-orange-300 transition mb-2">Conditional Rendering</h3>
+                    <p class="text-gray-600 text-sm">Render different elements based on conditions in React</p>
+                </div>
+            </a>
             
-            <div class="nav-card">
-                <a href="pages/lists-and-keys.html">Lists and Keys</a>
-                <p>Create dynamic lists and properly use keys in React</p>
-            </div>
+            <a href="pages/lists-and-keys.html" class="nav-card group bg-white overflow-hidden pointer flex flex-col">
+                <img src="assets/conditional-rendering.png" alt="Lists and Keys" class="rounded-md w-full h-40 sm:h-50 xl:h-60 object-cover">
+                <div class="p-4 flex flex-col flex-grow">
+                    <h3 class="font-semibold text-gray-900 group-hover:text-orange-300 transition mb-2">Lists and Keys</h3>
+                    <p class="text-gray-600 text-sm">Create dynamic lists and properly use keys in React</p>
+                </div>
+            </a>
             
-            <div class="nav-card">
-                <a href="pages/forms-and-controlled.html">Forms and Controlled Components</a>
-                <p>Handle form inputs and create controlled components</p>
-            </div>
+            <a href="pages/forms-and-controlled.html" class="nav-card group bg-white overflow-hidden pointer flex flex-col">
+                <img src="assets/lists-and-keys.png" alt="Forms and Controlled Components" class="rounded-md w-full h-40 sm:h-50 xl:h-60 object-cover">
+                <div class="p-4 flex flex-col flex-grow">
+                    <h3 class="font-semibold text-gray-900 group-hover:text-orange-300 transition mb-2">Forms and Controlled Components</h3>
+                    <p class="text-gray-600 text-sm">Handle form inputs and create controlled components</p>
+                </div>
+            </a>
             
-            <div class="nav-card">
-                <a href="pages/lifecycle-hooks.html">Lifecycle Methods and Hooks</a>
-                <p>Manage component lifecycle and use React Hooks</p>
-            </div>
-        </div>
-        
-        <footer>
-            <p>React Fundamentals Learning Platform - Legacy HTML Project</p>
-        </footer>
-    </div>
+            <a href="pages/lifecycle-hooks.html" class="nav-card group bg-white overflow-hidden pointer flex flex-col">
+                <img src="assets/forms-in-react.png" alt="Lifecycle Methods and Hooks" class="rounded-md w-full h-40 sm:h-50 xl:h-60 object-cover">
+                <div class="p-4 flex flex-col flex-grow">
+                    <h3 class="font-semibold text-gray-900 group-hover:text-orange-300 transition mb-2">Lifecycle Methods and Hooks</h3>
+                    <p class="text-gray-600 text-sm">Manage component lifecycle and use React Hooks</p>
+                </div>
+            </a>
+        </section>
+    </main>
 </body>
 </html>
