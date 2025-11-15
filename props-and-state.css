@@ -2,7 +2,10 @@
   --bg-color: #f8fafc;
   --text-color: #1e293b;
   --border-color: #e2e8f0;
-  --btn-color: #f0f2f5;
+  --btn-color: #000000;
+  --header-btn-color: #f1f5f9;
+  --surface-light-hover: #e2e8f0;
+  --surface-dark-hover: #475569;
   --code-bg: #2d3748;
   --code-text: #e2e8f0;
   --text-color-secondary: #334155;
@@ -19,11 +22,14 @@
 
 [data-theme=dark] {
   --bg-color: #1e293b;
-  --text-color: #e2e8f0;
+  --text-color: #f8f8f8;
   --border-color: #334155;
   --code-bg: #0f172a;
   --code-text: #cbd5e1;
   --btn-color: #0f172a;
+  --header-btn-color: #334155;
+  --surface-light-hover: #e2e8f0;
+  --surface-dark-hover: #475569;
   --text-color-secondary: #cbd5e1;
   --textarea-bg: #334155;
   --textarea-border: #475569;
@@ -193,7 +199,6 @@ code u {
 .navigation a {
   display: inline-block;
   background: #f0f2f5;
-  color: black;
   padding: 0.75rem 1.5rem;
   border-radius: 0.75rem;
   font-weight: 500;
@@ -214,7 +219,6 @@ code u {
 .a-btn {
   display: inline-block;
   background: #f0f2f5;
-  color: black;
   padding: 0.75rem 1.5rem;
   border-radius: 0.75rem;
   font-weight: 500;
