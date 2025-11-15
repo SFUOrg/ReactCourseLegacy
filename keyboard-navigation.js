@@ -19,8 +19,9 @@
         if (!container) return [];
 
         // Находим все интерактивные элементы: a, button, input, select, textarea
+        // Также включаем элементы с tabindex="0" (включая заголовки)
         const elements = Array.from(container.querySelectorAll(
-            'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+            'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex="0"]'
         ));
 
         // Фильтруем скрытые элементы
@@ -55,9 +56,16 @@
     function highlightCurrent() {
         removeHighlight();
         if (currentElements[currentIndex]) {
-            currentElements[currentIndex].classList.add(SELECTED_CLASS);
+            const element = currentElements[currentIndex];
+            element.classList.add(SELECTED_CLASS);
+            
+            // Если это textarea или input, сразу устанавливаем фокус для возможности печати
+            if (element.tagName === 'TEXTAREA' || element.tagName === 'INPUT') {
+                element.focus();
+            }
+            
             // Прокрутить элемент в видимую область
-            currentElements[currentIndex].scrollIntoView({ 
+            element.scrollIntoView({ 
                 behavior: 'smooth', 
                 block: 'nearest' 
             });
@@ -97,6 +105,11 @@
             // Для ссылок и кнопок
             if (element.tagName === 'A' || element.tagName === 'BUTTON') {
                 element.click();
+            }
+            // Для заголовков - прокрутка к элементу и фокус
+            else if (element.tagName.match(/^H[1-6]$/)) {
+                element.focus();
+                element.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
             // Для других интерактивных элементов - просто фокус
             else {
@@ -162,9 +175,13 @@
         });
 
         // Убираем подсветку при фокусе через Tab (стандартная навигация)
+        // НО не убираем, если элемент уже выделен нашей навигацией
         document.addEventListener('focusin', function(e) {
             // Если фокус получен стандартным способом (не через нашу навигацию)
+            // и элемент не имеет класса keyboard-selected
             if (!e.target.classList.contains(SELECTED_CLASS)) {
+                // Убираем подсветку только если это не наш программный фокус
+                // Для textarea/input мы устанавливаем фокус программно, но они уже имеют SELECTED_CLASS
                 removeHighlight();
             }
         });

@@ -5,47 +5,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Components and JSX - React Fundamentals</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
 </head>
 <body class="bg-white">
     <!-- Header -->
-    <header class="border-b border-gray-200">
+    <header class="border-b border-gray-200" role="banner">
         <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
             <div class="flex items-center space-x-2">
-                <img src="../asserts/logo_forms.svg" alt="CodeCraft" class="h-6 w-auto">
-                <span class="text-xl font-bold text-gray-900">CodeCraft</span>
+                <img src="../assets/logo.svg" alt="React Learning logo" class="h-6 w-auto" aria-hidden="true">
+                <a href="../index.html" class="text-xl font-bold text-gray-900 hover:text-orange-300 transition" aria-label="React Learning homepage">React Learning</a>
             </div>
-            <nav class="flex items-center space-x-6">
-                <a href="#" class="text-gray-900 hover:text-gray-700">Catalog</a>
-                <a href="#" class="text-gray-900 hover:text-gray-700">Roadmaps</a>
-                <a href="#" class="text-gray-900 hover:text-gray-700">Discussions</a>
-                <a href="#" class="text-gray-900 hover:text-gray-700">Cheatsheets</a>
-                <button class="bg-gray-100 hover:bg-gray-200 text-gray-900 px-4 py-2 rounded-md font-bold transition-colors">Sign in</button>
+            <nav class="flex items-center space-x-6" aria-label="Main navigation">
+                <a href="#" class="text-gray-900 hover:text-gray-700">Tutorials</a>
+                <a href="#" class="text-gray-900 hover:text-gray-700">Community</a>
+                <a href="#" class="text-gray-900 hover:text-gray-700">Exercises</a>
+                <a href="#" class="text-gray-900 hover:text-gray-700">Resources</a>
+                <button class="bg-gray-100 hover:bg-gray-200 text-gray-900 px-4 py-2 rounded-md font-bold transition-colors" aria-label="Sign in">Sign in</button>
             </nav>
         </div>
     </header>
 
     <!-- Main Content -->
-    <div class="max-w-4xl mx-auto px-6 py-8">
-        <h1 class="text-4xl font-bold text-gray-900 mb-2">Components and JSX</h1>
-        <p class="text-lg text-gray-700 mb-2">Learn how to create reusable UI components and use JSX syntax to define their structure.</p>
-        <div class="text-sm text-gray-600 mb-8">React Fundamentals / Components and JSX</div>
+    <main class="max-w-4xl mx-auto px-6 py-8" role="main" aria-label="Lesson content">
+        <nav class="text-sm text-gray-600 mb-8" aria-label="Breadcrumb">
+            <a href="../index.html" class="hover:text-gray-900">React Fundamentals</a> / <span aria-current="page">Components and JSX</span>
+        </nav>
         
-        <div class="theory mb-8">
-            <h2 class="text-2xl font-bold text-gray-900 mb-4">Understanding Components</h2>
+        <h1 class="text-4xl font-bold text-gray-900 mb-2" tabindex="0" id="page-title">Components and JSX</h1>
+        <p class="text-lg text-gray-700 mb-2">Learn how to create reusable UI components and use JSX syntax to define their structure.</p>
+        
+        <section class="theory mb-8" aria-labelledby="understanding-components-title">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4" tabindex="0" id="understanding-components-title">Understanding Components</h2>
             <p class="text-gray-700 leading-relaxed mb-4">React components are independent and reusable bits of code that describe a part of the user interface. Components can be thought of as JavaScript functions that receive inputs (called props) and return React elements describing what should appear on the screen.</p>
             <p class="text-gray-700 leading-relaxed mb-4">Components can be either functional (stateless) or class-based (stateful). Functional components are simpler and are preferred for components that only need to render UI based on props.</p>
-        </div>
+        </section>
         
-        <div class="theory mb-8">
-            <h2 class="text-2xl font-bold text-gray-900 mb-4">JSX Syntax</h2>
+        <section class="theory mb-8" aria-labelledby="jsx-syntax-title">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4" tabindex="0" id="jsx-syntax-title">JSX Syntax</h2>
             <p class="text-gray-700 leading-relaxed mb-4">JSX stands for JavaScript XML and allows us to write HTML-like code in our JavaScript files. It is a syntax extension for JavaScript that looks similar to HTML but is transformed into regular JavaScript during the build process.</p>
             <p class="text-gray-700 leading-relaxed mb-4">JSX allows embedding expressions in curly braces, making it easy to combine JavaScript logic with HTML structure.</p>
-        </div>
+        </section>
         
-        <div class="example mb-8">
-            <h2 class="text-2xl font-bold text-gray-900 mb-4">Example</h2>
+        <section class="example mb-8" aria-labelledby="example-title">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4" tabindex="0" id="example-title">Example</h2>
             <p class="text-gray-700 leading-relaxed mb-4">Here's a simple example of a React component using JSX:</p>
-            <pre class="bg-white border border-gray-300 rounded-lg p-4 overflow-x-auto"><code class="text-sm text-gray-800">function Welcome(props) {
+            <pre class="bg-white border border-gray-300 rounded-lg p-4 overflow-x-auto" role="img" aria-label="Code example showing a React component"><code class="text-sm text-gray-800">function Welcome(props) {
   return &lt;h1&gt;Hello, {props.name}!&lt;/h1&gt;;
 }
 
@@ -53,29 +60,41 @@
 const element = &lt;Welcome name="Sarah" /&gt;;
 
 // Renders: &lt;h1&gt;Hello, Sarah!&lt;/h1&gt;</code></pre>
-        </div>
+        </section>
         
-        <div class="exercise mb-8">
-            <h2 class="text-2xl font-bold text-gray-900 mb-4">Exercise</h2>
+        <section class="exercise mb-8" aria-labelledby="exercise-title">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4" tabindex="0" id="exercise-title">Exercise</h2>
             <p class="text-gray-700 leading-relaxed mb-4">Create a component named 'Greeting' that accepts a 'name' prop and displays a greeting message. Use JSX to render the component with the name 'Alex'.</p>
             
             <label for="answer" class="block text-gray-700 font-medium mb-2">Your Component Code:</label>
-            <textarea id="answer" rows="10" class="w-full border border-gray-300 rounded-lg p-4 font-mono text-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="function Greeting(props) {
+            <textarea 
+                id="answer" 
+                rows="10" 
+                class="w-full border border-gray-300 rounded-lg p-4 font-mono text-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" 
+                placeholder="function Greeting(props) {
   // Your code here
   return &lt;div&gt;...&lt;/div&gt;;
-}"></textarea>
+}"
+                aria-label="Code editor for your solution"
+                aria-describedby="exercise-description"></textarea>
+            <div id="exercise-description" class="sr-only">Enter your React component code in the text area above</div>
             
-            <button onclick="checkAnswer()" class="mt-4 bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-6 rounded-lg transition-colors">Check Answer</button>
+            <button 
+                onclick="checkAnswer()" 
+                class="mt-4 bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-6 rounded-lg transition-colors"
+                aria-label="Check your answer"
+                aria-describedby="result">Check Answer</button>
             
-            <div id="result" class="result mt-4 p-4 rounded-lg hidden"></div>
-        </div>
+            <div id="result" class="result mt-4 p-4 rounded-lg hidden" role="status" aria-live="polite" aria-atomic="true"></div>
+        </section>
         
-        <div class="navigation flex flex-row gap-4 mt-12 pt-8 border-t border-gray-200">
-            <a href="../index.html" class="bg-gray-100 hover:bg-gray-200 text-gray-800 py-2 px-6 rounded-md transition-colors">Back to Main Menu</a>
-            <a href="props-and-state.html" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-6 rounded-md transition-colors ml-auto">Next</a>
-        </div>
-    </div>
+        <nav class="navigation flex flex-row gap-4 mt-12 pt-8 border-t border-gray-200" aria-label="Lesson navigation">
+            <a href="../index.html" class="bg-gray-100 hover:bg-gray-200 text-gray-800 py-2 px-6 rounded-md transition-colors" aria-label="Back to main menu">Back to Main Menu</a>
+            <a href="props-and-state.html" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-6 rounded-md transition-colors ml-auto" aria-label="Go to next lesson: Props and State">Next</a>
+        </nav>
+    </main>
 
+    <script src="../keyboard-navigation.js"></script>
     <script>
         function checkAnswer() {
             const answer = document.getElementById('answer').value;
