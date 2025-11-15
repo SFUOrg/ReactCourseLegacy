@@ -115,3 +115,10 @@ index.html
 - Чтобы объяснять React наглядно.
 - Чтобы делиться знаниями с новичками.
 - Чтобы самому держать фундаментальные вещи под рукой.
+
+## 👨‍💻 Разработчики 
+
+- [skeiigi](https://github.com/skeiigi) 🖖
+- [romatrooy](https://github.com/romatrooy) 🤑
+- [hilizzun](https://github.com/hilizzun) 😼
+- [leonorino](https://github.com/leonorino) 🤫
