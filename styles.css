@@ -44,6 +44,15 @@ header a.keyboard-selected {
     color: #f97316 !important;
 }
 
+/* Ссылки в breadcrumb должны быть полностью выделены */
+nav[aria-label="Breadcrumb"] a.keyboard-selected {
+    color: #f97316 !important;
+    outline: 3px solid #f97316 !important;
+    outline-offset: 2px;
+    border-radius: 4px;
+    box-shadow: 0 0 0 2px rgba(249, 115, 22, 0.2);
+}
+
 /* Кнопка "New" - серый фон при hover */
 a.keyboard-selected.bg-gray-200 {
     background-color: #d1d5db !important;
