@@ -18,7 +18,7 @@
     --border-light: oklch(92.8% 0.006 264.531);
     --border-dark: oklch(37.3% 0.034 259.733);
 
-    --accent: oklch(83.7% 0.128 66.29);
+    --accent: #7e50c4;
 }
 
 /* Видимые стили фокуса для всех интерактивных элементов */
@@ -31,7 +31,7 @@ button:focus-visible {
 
 /* Подсветка выбранного элемента при навигации с клавиатуры */
 .keyboard-selected {
-    outline: 3px solid #f97316 !important;
+    outline: 3px solid var(--accent) !important;
     outline-offset: 2px;
     border-radius: 4px;
     box-shadow: 0 0 0 2px rgba(249, 115, 22, 0.2);
@@ -41,7 +41,7 @@ button:focus-visible {
 /* Ссылки в навигации - оранжевый текст */
 nav a.keyboard-selected,
 header a.keyboard-selected {
-    color: #f97316 !important;
+    color: var(--accent) !important;
 }
 
 /* Ссылки в breadcrumb должны быть полностью выделены */
@@ -67,7 +67,7 @@ a.keyboard-selected.bg-gray-200 {
 }
 
 .nav-card.keyboard-selected {
-    outline: 3px solid #f97316 !important;
+    outline: 3px solid var(--accent) !important;
     outline-offset: 4px;
     transform: scale(1.02);
     box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
@@ -75,7 +75,7 @@ a.keyboard-selected.bg-gray-200 {
 
 /* Hover эффекты для карточек при keyboard-selected (как group-hover) */
 .nav-card.keyboard-selected h3 {
-    color: #f97316 !important;
+    color: var(--accent) !important;
 }
 
 /* Стили фокуса для навигации */
