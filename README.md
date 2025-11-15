@@ -122,3 +122,5 @@ index.html
 - [romatrooy](https://github.com/romatrooy) 🤑
 - [hilizzun](https://github.com/hilizzun) 😼
 - [leonorino](https://github.com/leonorino) 🤫
+- [cybersj5](https://github.com/cybersj5) 😉
+- [GitHEXual](https://github.com/GitHEXual) 😲
