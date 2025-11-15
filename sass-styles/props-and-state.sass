@@ -74,7 +74,7 @@ code
     margin: 2rem 0 1rem
 
   textarea
-    width: 50%
+    max-width: 90%
     min-height: 200px
     padding: 1rem
     border: 1px solid #cbd5e1
@@ -94,7 +94,7 @@ code
   textarea::-webkit-scrollbar
     display: none
 
-  button
+.exersize-btn
     background-color: #3b82f6
     color: white
     border: none
@@ -169,3 +169,26 @@ code
   justify-content: center
   border-top: 1px solid #e2e8f0
   padding-top: 1rem
+
+
+@media screen and (width <= 426px)
+  pre
+    max-width: 90%
+
+  .navigation
+    gap: 1rem
+  
+  .exersize-btn
+    max-width: 50%
+
+@media screen and (width <= 769px)
+  pre
+    max-width: 70%
+
+  .navigation
+    gap: 1rem
+  
+  .exersize-btn
+    max-width: 20%
+
+    

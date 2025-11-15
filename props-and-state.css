@@ -75,7 +75,7 @@ code u {
   margin: 2rem 0 1rem;
 }
 .exercise textarea {
-  width: 50%;
+  max-width: 90%;
   min-height: 200px;
   padding: 1rem;
   border: 1px solid #cbd5e1;
@@ -94,7 +94,8 @@ code u {
 .exercise textarea::-webkit-scrollbar {
   display: none;
 }
-.exercise button {
+
+.exersize-btn {
   background-color: #3b82f6;
   color: white;
   border: none;
@@ -107,11 +108,11 @@ code u {
   max-width: 10%;
   transition: background-color 0.2s ease, transform 0.1s ease;
 }
-.exercise button:hover {
+.exersize-btn:hover {
   background-color: #2563eb;
   transform: translateY(-1px);
 }
-.exercise button:active {
+.exersize-btn:active {
   transform: translateY(0);
 }
 
@@ -192,6 +193,29 @@ code u {
   justify-content: center;
   border-top: 1px solid #e2e8f0;
   padding-top: 1rem;
+}
+
+@media screen and (width <= 426px) {
+  pre {
+    max-width: 90%;
+  }
+  .navigation {
+    gap: 1rem;
+  }
+  .exersize-btn {
+    max-width: 50%;
+  }
+}
+@media screen and (width <= 769px) {
+  pre {
+    max-width: 70%;
+  }
+  .navigation {
+    gap: 1rem;
+  }
+  .exersize-btn {
+    max-width: 20%;
+  }
 }
 
 /*# sourceMappingURL=props-and-state.css.map */
