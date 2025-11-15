@@ -1,12 +1,54 @@
+:root {
+  --bg-color: #f8fafc;
+  --text-color: #1e293b;
+  --border-color: #e2e8f0;
+  --btn-color: #f0f2f5;
+  --code-bg: #2d3748;
+  --code-text: #e2e8f0;
+  --text-color-secondary: #334155;
+  --textarea-bg: #f8fafc;
+  --textarea-border: #cbd5e1;
+  --result-success-bg: #d1fae5;
+  --result-success-text: #065f46;
+  --result-success-border: #a7f3d0;
+  --result-error-bg: #fee2e2;
+  --result-error-text: #b91c1c;
+  --result-error-border: #fecaca;
+  --nav-border: #e2e8f0;
+}
+
+[data-theme=dark] {
+  --bg-color: #1e293b;
+  --text-color: #e2e8f0;
+  --border-color: #334155;
+  --code-bg: #0f172a;
+  --code-text: #cbd5e1;
+  --btn-color: #0f172a;
+  --text-color-secondary: #cbd5e1;
+  --textarea-bg: #334155;
+  --textarea-border: #475569;
+  --result-success-bg: #065f46;
+  --result-success-text: #a7f3d0;
+  --result-success-border: #065f46;
+  --result-error-bg: #b91c1c;
+  --result-error-text: #fecaca;
+  --result-error-border: #b91c1c;
+  --nav-border: #334155;
+}
+
 main {
   display: grid;
   place-items: center;
+  background-color: var(--bg-color);
+  color: var(--text-color);
 }
 
 .container {
   display: flex;
   flex-direction: column;
   padding: 3rem;
+  background-color: var(--bg-color);
+  color: var(--text-color);
 }
 .container h1 {
   font-weight: 700;
@@ -16,16 +58,19 @@ main {
 .theory {
   display: flex;
   flex-direction: column;
+  color: var(--text-color);
 }
 
 .title {
   font-weight: 700;
   font-size: 2rem;
   padding: 3rem 0 1rem;
+  color: var(--text-color);
 }
 
 .text {
   font-weight: 400;
+  color: var(--text-color-secondary);
 }
 
 .example {
@@ -34,7 +79,7 @@ main {
 }
 
 pre {
-  background-color: #2d3748;
+  background-color: var(--code-bg);
   border-radius: 0.5rem;
   padding: 1.25rem;
   overflow-x: auto;
@@ -45,7 +90,7 @@ pre {
 code {
   font-family: "Fira Code", "Monaco", "Inconsolata", "Consolas", monospace;
   font-size: 0.9375rem;
-  color: #e2e8f0;
+  color: var(--code-text);
   line-height: 1.5;
   white-space: pre-wrap;
   word-break: break-word;
@@ -67,22 +112,24 @@ code u {
 .exercise {
   display: flex;
   flex-direction: column;
+  color: var(--text-color);
 }
 .exercise label {
   font-weight: 500;
-  color: #334155;
+  color: var(--text-color-secondary);
   display: block;
   margin: 2rem 0 1rem;
 }
 .exercise textarea {
-  width: 50%;
+  max-width: 90%;
   min-height: 200px;
   padding: 1rem;
-  border: 1px solid #cbd5e1;
+  border: 1px solid var(--textarea-border);
   border-radius: 0.5rem;
   font-family: "Fira Code", "Monaco", "Inconsolata", "Consolas", monospace;
   font-size: 0.9375rem;
-  background-color: #f8fafc;
+  background-color: var(--textarea-bg);
+  color: var(--text-color);
   resize: vertical;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
@@ -94,9 +141,10 @@ code u {
 .exercise textarea::-webkit-scrollbar {
   display: none;
 }
-.exercise button {
+
+.exersize-btn {
   background-color: #3b82f6;
-  color: white;
+  color: var(--btn-color);
   border: none;
   border-radius: 0.5rem;
   padding: 0.75rem;
@@ -107,11 +155,11 @@ code u {
   max-width: 10%;
   transition: background-color 0.2s ease, transform 0.1s ease;
 }
-.exercise button:hover {
+.exersize-btn:hover {
   background-color: #2563eb;
   transform: translateY(-1px);
 }
-.exercise button:active {
+.exersize-btn:active {
   transform: translateY(0);
 }
 
@@ -121,16 +169,17 @@ code u {
   border-radius: 0.5rem;
   font-weight: 500;
   display: none;
+  color: var(--text-color);
 }
 .result.success {
-  background-color: #d1fae5;
-  color: #065f46;
-  border: 1px solid #a7f3d0;
+  background-color: var(--result-success-bg);
+  color: var(--result-success-text);
+  border: 1px solid var(--result-success-border);
 }
 .result.error {
-  background-color: #fee2e2;
-  color: #b91c1c;
-  border: 1px solid #fecaca;
+  background-color: var(--result-error-bg);
+  color: var(--result-error-text);
+  border: 1px solid var(--result-error-border);
 }
 
 .navigation {
@@ -139,7 +188,7 @@ code u {
   justify-content: space-between;
   margin-top: 2rem;
   padding-top: 1.5rem;
-  border-top: 1px solid #e2e8f0;
+  border-top: 1px solid var(--nav-border);
 }
 .navigation a {
   display: inline-block;
@@ -152,10 +201,11 @@ code u {
   text-align: center;
   transition: background-color 0.2s ease, transform 0.1s ease;
   cursor: pointer;
+  color: var(--btn-color);
 }
 .navigation a:hover {
   background-color: #1d4ed8;
-  color: #eff6ff;
+  color: var(--btn-color);
 }
 .navigation a:active {
   color: #1e40af;
@@ -174,15 +224,50 @@ code u {
   cursor: pointer;
   width: fit-content;
   margin: 1rem 0;
+  color: var(--btn-color);
 }
 
 .a-btn:hover {
   background-color: #1d4ed8;
-  color: #eff6ff;
+  color: var(--btn-color);
 }
 
 .a-btn:active {
   color: #1e40af;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-color);
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid var(--nav-border);
+  padding-top: 1rem;
+  color: var(--text-color);
+}
+
+@media screen and (width <= 426px) {
+  pre {
+    max-width: 90%;
+  }
+  .navigation {
+    gap: 1rem;
+  }
+  .exersize-btn {
+    max-width: 50%;
+  }
+}
+@media screen and (width <= 769px) {
+  pre {
+    max-width: 90%;
+  }
+  .navigation {
+    gap: 1rem;
+  }
+  .exersize-btn {
+    max-width: 40%;
+  }
 }
 
 /*# sourceMappingURL=props-and-state.css.map */
