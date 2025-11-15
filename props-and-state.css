@@ -208,13 +208,13 @@ code u {
 }
 @media screen and (width <= 769px) {
   pre {
-    max-width: 70%;
+    max-width: 90%;
   }
   .navigation {
     gap: 1rem;
   }
   .exersize-btn {
-    max-width: 20%;
+    max-width: 40%;
   }
 }
 
