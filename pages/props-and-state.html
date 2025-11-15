@@ -45,18 +45,18 @@
         </div>
     </header>
     <main>
-      <div class="container">
-        <h1>Props and State</h1>
+      <section class="container" role="main" aria-labelledby="main-heading">
+        <h1 id="main-heading">Props and State</h1>
         
-        <div class="theory">
-            <h2 class="title">Understanding Props and State</h2>
+        <div class="theory" role="complementary" aria-labelledby="theory-title">
+            <h2 class="title" id="theory-title">Understanding Props and State</h2>
             <p class="text">Props (short for properties) are how components talk to each other. They are passed from parent components to child components and are immutable - meaning they cannot be changed from within the component that receives them.</p>
             <p class="text">State is an object that holds data that may change over the lifetime of a component. Unlike props, state is managed within the component itself and can be updated using methods like setState in class components or useState in functional components with hooks.</p>
             <p class="text">Props are used to pass data down the component tree, while state is used to manage data that changes within a component.</p>
         </div>
         
-        <div class="example">
-            <h2 class="title">Example: Using Props</h2>
+        <div class="example" role="region" aria-labelledby="example-props-title">
+            <h2 class="title" id="example-props-title">Example: Using Props</h2>
             <pre><code>function Welcome(props) {
   return &lt;h1&gt;Hello, {props.name}!&lt;/h1&gt;;
 }
@@ -65,8 +65,8 @@
 const element = &lt;Welcome name="Sarah" /&gt;;</code></pre>
         </div>
         
-        <div class="example">
-            <h2 class="title">Example: Using State in Class Components</h2>
+        <div class="example" role="region" aria-labelledby="example-class-title">
+            <h2 class="title" id="example-class-title">Example: Using State in Class Components</h2>
             <pre><code>class Counter extends React.Component {
   constructor(props) {
     super(props);
@@ -86,8 +86,8 @@ const element = &lt;Welcome name="Sarah" /&gt;;</code></pre>
 }</code></pre>
         </div>
         
-        <div class="example">
-            <h2 class="title">Example: Using State with Hooks (Functional Components)</h2>
+        <div class="example" role="region" aria-labelledby="example-hooks-title">
+            <h2 class="title" id="example-hooks-title">Example: Using State with Hooks (Functional Components)</h2>
             <pre><code>import { useState } from 'react';
 
 function Counter() {
@@ -104,12 +104,12 @@ function Counter() {
 }</code></pre>
         </div>
         
-          <div class="exercise">
-            <h2 class="title">Interactive Exercise</h2>
+          <div class="exercise" role="region" aria-labelledby="exercise-title">
+            <h2 class="title" id="exercise-title">Interactive Exercise</h2>
             <p class="text">Create a functional React component called "UserProfile" that accepts two props: "name" and "age". The component should display a string like "User: John, Age: 25". Additionally, implement state to track how many times a "Like" button has been clicked, starting at 0 and incrementing with each click.</p>
             
-            <label for="answer">Your Component Code:</label>
-            <textarea id="answer" rows="10" placeholder="import { useState } from 'react';
+            <label for="answer" id="answer-label">Your Component Code:</label>
+            <textarea id="answer" rows="10" aria-labelledby="answer-label" placeholder="import { useState } from 'react';
 
 function UserProfile(props) {
   // Initialize state for likes
@@ -127,20 +127,20 @@ function UserProfile(props) {
   );
 }"></textarea>
             
-            <button onclick="checkAnswer()">Check Answer</button>
+            <button onclick="checkAnswer()" aria-describedby="result">Check Answer</button>
             
-            <div id="result" class="result"></div>
+            <div id="result" class="result" role="status" aria-live="polite"></div>
         </div>
         
-        <div class="navigation">
+        <nav class="navigation" role="navigation" aria-label="Page navigation">
             <a href="components-and-jsx.html">← Previous: Components and JSX</a>
             <a href="event-handling.html">Next: Event Handling →</a>
-        </div>
-        <a class="a-btn" href="../index.html">Main Menu</a>
+        </nav>
+        <a class="a-btn" href="../index.html" aria-label="Go to main menu">Main Menu</a>
         
         
         
-    </div>
+    </section>
     </main>
     
 
