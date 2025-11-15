@@ -19,8 +19,9 @@
         if (!container) return [];
 
         // Находим все интерактивные элементы: a, button, input, select, textarea
+        // Также включаем элементы с tabindex="0" (включая заголовки)
         const elements = Array.from(container.querySelectorAll(
-            'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+            'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex="0"]'
         ));
 
         // Фильтруем скрытые элементы
@@ -97,6 +98,11 @@
             // Для ссылок и кнопок
             if (element.tagName === 'A' || element.tagName === 'BUTTON') {
                 element.click();
+            }
+            // Для заголовков - прокрутка к элементу и фокус
+            else if (element.tagName.match(/^H[1-6]$/)) {
+                element.focus();
+                element.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
             // Для других интерактивных элементов - просто фокус
             else {

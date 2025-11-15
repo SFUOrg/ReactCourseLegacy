@@ -84,3 +84,56 @@ button:focus-visible {
     border-radius: 4px;
 }
 
+/* Стили для заголовков при навигации с клавиатуры */
+h1.keyboard-selected,
+h2.keyboard-selected,
+h3.keyboard-selected,
+h4.keyboard-selected,
+h5.keyboard-selected,
+h6.keyboard-selected {
+    outline: 3px solid #f97316 !important;
+    outline-offset: 4px;
+    border-radius: 4px;
+    box-shadow: 0 0 0 2px rgba(249, 115, 22, 0.2);
+}
+
+/* Стили для textarea при навигации */
+textarea.keyboard-selected {
+    outline: 3px solid #f97316 !important;
+    outline-offset: 2px;
+    border-color: #f97316 !important;
+    box-shadow: 0 0 0 2px rgba(249, 115, 22, 0.2);
+}
+
+/* Стили фокуса для заголовков */
+h1:focus-visible,
+h2:focus-visible,
+h3:focus-visible,
+h4:focus-visible,
+h5:focus-visible,
+h6:focus-visible {
+    outline: 3px solid #3b82f6;
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+/* Стили фокуса для textarea */
+textarea:focus-visible {
+    outline: 3px solid #3b82f6;
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+/* Screen reader only - скрытый текст для доступности */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
