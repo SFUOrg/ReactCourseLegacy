@@ -4,37 +4,39 @@
 main
   display: grid
   place-items: center
+  background-color: var(--bg-color)
+  color: var(--text-color)
 
 .container
   display: flex
   flex-direction: column
   padding: 3rem
+  background-color: var(--bg-color)
+  color: var(--text-color)
   
   h1
     font-weight: 700
     font-size: 3rem
       
-    
-    
-
 .theory
-    @include mixins.flexcolumn()
-    
+  @include mixins.flexcolumn()
+  color: var(--text-color)
 
 .title
   font-weight: 700
   font-size: 2rem
-  padding:3rem 0 1rem
-  
+  padding: 3rem 0 1rem
+  color: var(--text-color)
 
 .text
   font-weight: 400
+  color: var(--text-color-secondary)
 
 .example
   @include mixins.flexcolumn()
 
 pre
-  background-color: #2d3748
+  background-color: var(--code-bg)
   border-radius: 0.5rem
   padding: 1.25rem
   overflow-x: auto
@@ -44,7 +46,7 @@ pre
 code
   font-family: 'Fira Code', 'Monaco', 'Inconsolata', 'Consolas', monospace
   font-size: 0.9375rem
-  color: #e2e8f0
+  color: var(--code-text)
   line-height: 1.5
   white-space: pre-wrap
   word-break: break-word
@@ -52,7 +54,7 @@ code
 // Синтаксис JSX
 code
   b
-    color: #69b3a2
+    color: #69b3a2  // можно оставить как есть, если не хочешь менять
     font-weight: normal
 
   i
@@ -65,11 +67,11 @@ code
 
 .exercise
   @include mixins.flexcolumn()
-
+  color: var(--text-color)
 
   label
     font-weight: 500
-    color: #334155
+    color: var(--text-color-secondary)
     display: block
     margin: 2rem 0 1rem
 
@@ -77,14 +79,14 @@ code
     max-width: 90%
     min-height: 200px
     padding: 1rem
-    border: 1px solid #cbd5e1
+    border: 1px solid var(--textarea-border)
     border-radius: 0.5rem
     font-family: 'Fira Code', 'Monaco', 'Inconsolata', 'Consolas', monospace
     font-size: 0.9375rem
-    background-color: #f8fafc
+    background-color: var(--textarea-bg)
+    color: var(--text-color)
     resize: vertical
     transition: border-color 0.2s ease, box-shadow 0.2s ease
-    
 
     &:focus
       outline: none
@@ -95,24 +97,24 @@ code
     display: none
 
 .exersize-btn
-    background-color: #3b82f6
-    color: white
-    border: none
-    border-radius: 0.5rem
-    padding: 0.75rem
-    font-size: 1rem
-    font-weight: 500
-    cursor: pointer
-    margin-top: 1rem
-    max-width: 10%
-    transition: background-color 0.2s ease, transform 0.1s ease
+  background-color: #3b82f6  // синий цвет оставлен как есть
+  color: var(--btn-color)
+  border: none
+  border-radius: 0.5rem
+  padding: 0.75rem
+  font-size: 1rem
+  font-weight: 500
+  cursor: pointer
+  margin-top: 1rem
+  max-width: 10%
+  transition: background-color 0.2s ease, transform 0.1s ease
 
-    &:hover
-      background-color: #2563eb
-      transform: translateY(-1px)
+  &:hover
+    background-color: #2563eb
+    transform: translateY(-1px)
 
-    &:active
-      transform: translateY(0)
+  &:active
+    transform: translateY(0)
 
 .result
   margin-top: 1rem
@@ -120,16 +122,17 @@ code
   border-radius: 0.5rem
   font-weight: 500
   display: none
+  color: var(--text-color)
 
   &.success
-    background-color: #d1fae5
-    color: #065f46
-    border: 1px solid #a7f3d0
+    background-color: var(--result-success-bg)
+    color: var(--result-success-text)
+    border: 1px solid var(--result-success-border)
 
   &.error
-    background-color: #fee2e2
-    color: #b91c1c
-    border: 1px solid #fecaca
+    background-color: var(--result-error-bg)
+    color: var(--result-error-text)
+    border: 1px solid var(--result-error-border)
 
 .navigation
   display: flex
@@ -137,14 +140,15 @@ code
   justify-content: space-between
   margin-top: 2rem
   padding-top: 1.5rem
-  border-top: 1px solid #e2e8f0
+  border-top: 1px solid var(--nav-border)
 
   a
     @include mixins.button()
+    color: var(--btn-color)
 
     &:hover
-      background-color:  #1d4ed8
-      color: #eff6ff
+      background-color: #1d4ed8
+      color: var(--btn-color)
 
     &:active
       color: #1e40af
@@ -153,23 +157,23 @@ code
   @include mixins.button()
   width: fit-content
   margin: 1rem 0
-  
+  color: var(--btn-color)
 
 .a-btn:hover
-    background-color:  #1d4ed8
-    color: #eff6ff
-    
+  background-color: #1d4ed8
+  color: var(--btn-color)
 
 .a-btn:active
-    color: #1e40af
+  color: #1e40af
 
 .footer
   @include mixins.flexcolumn()
+  background: var(--bg-color)
   align-items: center
   justify-content: center
-  border-top: 1px solid #e2e8f0
+  border-top: 1px solid var(--nav-border)
   padding-top: 1rem
-
+  color: var(--text-color)
 
 @media screen and (width <= 426px)
   pre
@@ -177,7 +181,7 @@ code
 
   .navigation
     gap: 1rem
-  
+
   .exersize-btn
     max-width: 50%
 
@@ -187,8 +191,6 @@ code
 
   .navigation
     gap: 1rem
-  
+
   .exersize-btn
     max-width: 40%
-
-    
