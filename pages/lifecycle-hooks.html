@@ -3,57 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lifecycle Methods and Hooks - React Fundamentals</title>
+    <title>React Fundamentals Learning Platform</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --nav-height: 2.5rem;
+            --logo-size: 1.5rem;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Lifecycle Methods and Hooks</h1>
-        
-        <div class="theory">
-            <h2>Understanding Component Lifecycle and Hooks</h2>
-            <p>In class components, lifecycle methods are special methods that get called at specific points in a component's lifecycle, such as when it mounts, updates, or unmounts. The main lifecycle methods are:</p>
-            <ul>
-                <li>componentDidMount - runs after the component is rendered to the DOM</li>
-                <li>componentDidUpdate - runs after the component updates</li>
-                <li>componentWillUnmount - runs right before the component is removed from the DOM</li>
-            </ul>
-            <p>Hooks allow you to use state and other React features in functional components. The most common hooks are:
-            <ul>
-                <li>useState - for managing state</li>
-                <li>useEffect - for performing side effects (replaces lifecycle methods)</li>
-                <li>useContext - for accessing context values</li>
-            </ul>
-            </p>
-            <p>The useEffect hook can handle the same scenarios as lifecycle methods. You can run effects after render by default, or conditionally run them when specific values change.</p>
+    <header class="border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+                <img src="../asserts/logo_forms.svg" alt="CodeCraft" class="h-6 w-auto">
+                <span class="text-xl font-bold text-gray-900">CodeCraft</span>
+            </div>
+            <nav class="flex items-center space-x-6">
+                <a href="#" class="text-gray-900 hover:text-gray-700">Catalog</a>
+                <a href="#" class="text-gray-900 hover:text-gray-700">Roadmaps</a>
+                <a href="#" class="text-gray-900 hover:text-gray-700">Discussions</a>
+                <a href="#" class="text-gray-900 hover:text-gray-700">Cheatsheets</a>
+                <button class="bg-gray-100 hover:bg-gray-200 text-gray-900 px-4 py-2 rounded-md font-bold transition-colors">Sign in</button>
+            </nav>
         </div>
-        
-        <div class="example">
-            <h2>Example: Using useEffect Hook</h2>
-            <pre><code>import { useState, useEffect } from 'react';
+    </header>
 
+    <main class="max-w-4xl mx-auto px-6 py-8">
+        <h1 class="text-4xl font-bold text-gray-900 mb-2">Lifecycle Methods and Hooks</h1>
+        
+        <section class="mb-8" id="theory" >
+             <h2 class="text-2xl font-bold text-gray-900 mb-4">Understanding Component Lifecycle and Hooks</h2>
+            <p class="text-gray-700 leading-relaxed mb-4">In class components, lifecycle methods are special methods that get 
+              called at specific points in a component's lifecycle, such as when it mounts,
+               updates, or unmounts. The main lifecycle methods are:</p>
+            <ul>
+                <li class="list-disc">componentDidMount - runs after the component is rendered to the DOM</li>
+                <li class="list-disc">componentDidUpdate - runs after the component updates</li>
+                <li class="list-disc">componentWillUnmount - runs right before the component is removed from the DOM</li>
+            </ul>
+            <br>
+            <p class="text-gray-700 leading-relaxed mb-4">Hooks allow you to use state and other React features in functional components.
+               The most common hooks are:</p>
+            <ul>
+                <li class="list-disc">useState - for managing state</li>
+                <li class="list-disc">useEffect - for performing side effects (replaces lifecycle methods)</li>
+                <li class="list-disc">useContext - for accessing context values</li>
+            </ul>
+            <br>
+            <p class="text-gray-700 leading-relaxed mb-4">The useEffect hook can handle the same scenarios as lifecycle methods. 
+              You can run effects after render by default,
+               or conditionally run them when specific values change.</p>
+        </section>
+        
+        <section class="mb-8" id="example">
+             <h2 class="text-2xl font-bold text-gray-900 mb-4">Example: Using useEffect Hook</h2>
+            <pre class="bg-white border border-gray-300 rounded-lg p-4 overflow-x-auto"><code class="text-sm text-gray-800">import { useState, useEffect } from 'react';
 function Example() {
-  const [count, setCount] = useState(0);
+    const [count, setCount] = useState(0);
 
-  // Similar to componentDidMount and componentDidUpdate
-  useEffect(() => {
-    // Update the document title using the browser API
-    document.title = `You clicked ${count} times`;
-  });
+    // Similar to componentDidMount and componentDidUpdate
+    useEffect(() => {
+      // Update the document title using the browser API
+      document.title = `You clicked ${count} times`;
+    });
 
-  return (
-    &lt;div&gt;
-      &lt;p&gt;You clicked {count} times&lt;/p&gt;
-      &lt;button onClick={() => setCount(count + 1)}&gt;
-        Click me
-      &lt;/button&gt;
-    &lt;/div&gt;
-  );
-}</code></pre>
-        </div>
+    return (
+      &lt;div&gt;
+        &lt;p&gt;You clicked {count} times&lt;/p&gt;
+        &lt;button onClick={() => setCount(count + 1)}&gt;
+          Click me
+        &lt;/button&gt;
+      &lt;/div&gt;
+    );
+}
+              </code></pre>
+        </section>
         
-        <div class="example">
-            <h2>Example: useEffect with Dependency Array</h2>
-            <pre><code>import { useState, useEffect } from 'react';
+        
+        <section class="mb-8" id="example">
+             <h2 class="text-2xl font-bold text-gray-900 mb-4">Example: useEffect with Dependency Array</h2>
+            <pre class="bg-white border border-gray-300 rounded-lg p-4 overflow-x-auto"><code class="text-sm text-gray-800">import { useState, useEffect } from 'react';
 
 function FriendStatus(props) {
   const [isOnline, setIsOnline] = useState(null);
@@ -76,12 +109,13 @@ function FriendStatus(props) {
     return 'Loading...';
   }
   return isOnline ? 'Online' : 'Offline';
-}</code></pre>
-        </div>
+}
+            </code></pre>
+        </section>
         
-        <div class="example">
-            <h2>Example: Multiple useEffect Hooks</h2>
-            <pre><code>function FriendStatusWithCounter(props) {
+        <section class="mb-8" id="example">
+             <h2 class="text-2xl font-bold text-gray-900 mb-4">Example: Multiple useEffect Hooks</h2>
+            <pre class="bg-white border border-gray-300 rounded-lg p-4 overflow-x-auto"><code class="text-sm text-gray-800">function FriendStatusWithCounter(props) {
   const [count, setCount] = useState(0);
   const [isOnline, setIsOnline] = useState(null);
 
@@ -101,16 +135,19 @@ function FriendStatus(props) {
   }, [props.friend.id]); // Only runs when props.friend.id changes
 
   // ... component JSX
-}</code></pre>
-        </div>
+}
+            </code></pre>
+        </section>
         
-        <div class="exercise">
-            <h2>Interactive Exercise</h2>
-            <p>Create a functional React component called "Timer" that displays a counter that increments every second. Use the useEffect and useState hooks to manage the timer. The component should also clean up the interval when the component is unmounted to prevent memory leaks.</p>
+        <section class="mb-8" id="exercise">
+             <h2 class="text-2xl font-bold text-gray-900 mb-4">Interactive Exercise</h2>
+            <p class="text-gray-700 leading-relaxed mb-4">Create a functional React component called "Timer" that displays a counter
+               that increments every second. Use the useEffect and useState hooks to manage the timer.
+                The component should also clean up the interval when the component is 
+                unmounted to prevent memory leaks.</p>
             
             <label for="answer">Your Component Code:</label>
-            <textarea id="answer" rows="15" placeholder="import { useState, useEffect } from 'react';
-
+            <textarea class="w-full border border-gray-300 rounded-lg p-4 font-mono text-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" id="answer" rows="15" placeholder="import { useState, useEffect } from 'react';
 function Timer() {
   const [seconds, setSeconds] = useState(0);
   
@@ -131,21 +168,18 @@ function Timer() {
       &lt;h2&gt;Timer: {seconds}s&lt;/h2&gt;
     &lt;/div&gt;
   );
-}
-
-// The useEffect hook sets up an interval that increments the seconds state every second
-// The return function in useEffect serves as the cleanup function to clear the interval"></textarea>
+}"></textarea>
             
-            <button onclick="checkAnswer()">Check Answer</button>
+            <button onclick="checkAnswer()" class="mt-4 bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-6 rounded-lg transition-colors">Check Answer</button>
             
-            <div id="result" class="result"></div>
-        </div>
+            <div id="result" class="result mt-4 p-4 rounded-lg hidden"></div>
+        </section>
         
-        <div class="navigation">
-            <a href="forms-and-controlled.html">← Previous: Forms and Controlled Components</a>
-            <a href="../index.html">Main Menu</a>
-        </div>
-    </div>
+        <nav class="navigation flex flex-row gap-4 mt-12 pt-8 border-t border-gray-200">
+            <a href="forms-and-controlled.html" class="bg-gray-100 hover:bg-gray-200 text-gray-800 py-2 px-6 rounded-md transition-colors">← Previous: Forms and Controlled Components</a>
+            <a href="../index.html" class="bg-gray-100 hover:bg-gray-200 text-gray-800 py-2 px-6 rounded-md transition-colors">Main Menu</a>
+        </nav>
+    </main>
 
     <script>
         function checkAnswer() {
