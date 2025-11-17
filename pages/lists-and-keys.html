@@ -24,30 +24,35 @@
     </script>
 </head>
 <body class="font-[Lexend] text-md lg:text-xl bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+    <!-- Skip link -->
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 bg-blue-500 text-white px-4 py-2 rounded-lg z-50">
+        Skip to main content
+    </a>
+    
     <header class="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 sticky top-0 z-50">
         <div class="px-4 sm:px-6 lg:px-8 py-2 sm:py-3 lg:py-4 flex items-center justify-between">
             <div class="flex items-center gap-2 sm:gap-3 lg:gap-4">
                 <img src="../assets/logo.svg"
                      class="w-2 sm:w-3 lg:w-4 h-2 sm:h-3 lg:h-4"
                      alt="React Learning Logo">
-                <a href="../index.html" class="font-bold cursor-pointer">React Learning</a>
+                <a href="../index.html" class="font-bold cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500 rounded">React Learning</a>
             </div>
             
             <nav class="hidden md:flex items-center gap-5 lg:gap-8 font-medium" aria-label="Main navigation">
-                <a href="#" class="dark:text-gray-300">Tutorials</a>
-                <a href="#" class="dark:text-gray-300">Community</a>
-                <a href="#" class="dark:text-gray-300">Exercises</a>
-                <a href="#" class="dark:text-gray-300">Resources</a>
-                <a href="#" class="bg-gray-100 dark:bg-gray-700 px-4 lg:px-7 h-6 lg:h-10 rounded-md flex items-center font-bold" aria-label="New content">
+                <a href="#" class="dark:text-gray-300 focus:outline-none focus:text-blue-500">Tutorials</a>
+                <a href="#" class="dark:text-gray-300 focus:outline-none focus:text-blue-500">Community</a>
+                <a href="#" class="dark:text-gray-300 focus:outline-none focus:text-blue-500">Exercises</a>
+                <a href="#" class="dark:text-gray-300 focus:outline-none focus:text-blue-500">Resources</a>
+                <a href="#" class="bg-gray-100 dark:bg-gray-700 px-4 lg:px-7 h-6 lg:h-10 rounded-md flex items-center font-bold focus:outline-none focus:ring-2 focus:ring-blue-500" aria-label="New content">
                     New
                 </a>
-                <a href="#" aria-label="User profile">
+                <a href="#" aria-label="User profile" class="focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-full">
                     <img src="../assets/avatar.png" alt="Profile picture" class="rounded-full cursor-pointer w-6 lg:w-10">
                 </a>
             </nav>
 
             <button id="mobileMenuButton" 
-                    class="md:hidden text-gray-800 dark:text-gray-200 cursor-pointer"
+                    class="md:hidden text-gray-800 dark:text-gray-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500 rounded p-1"
                     aria-label="Toggle mobile menu"
                     aria-expanded="false"
                     aria-controls="mobileMenu">
@@ -64,13 +69,13 @@
              class="md:hidden bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 absolute top-full left-0 w-full transform -translate-y-2 opacity-0 transition-all duration-300 ease-in-out pointer-events-none"
              aria-label="Mobile navigation"
              aria-hidden="true">
-            <div class="px-4 py-4 font-medium text-center">
-                <a href="#" class="block py-2 dark:text-gray-300">Tutorials</a>
-                <a href="#" class="block py-2 dark:text-gray-300">Community</a>
-                <a href="#" class="block py-2 dark:text-gray-300">Exercises</a>
-                <a href="#" class="block py-2 dark:text-gray-300">Resources</a>
-                <a href="#" class="block py-2 bg-gray-100 dark:bg-gray-700 rounded-md font-bold">New</a>
-                <a href="#" class="block py-2 font-medium flex items-center justify-center gap-2 dark:text-gray-300">
+            <div class="px-4 py-4 font-medium text-center space-y-2">
+                <a href="#" class="block py-2 dark:text-gray-300 focus:outline-none focus:bg-blue-100 dark:focus:bg-blue-900 focus:text-blue-500 rounded">Tutorials</a>
+                <a href="#" class="block py-2 dark:text-gray-300 focus:outline-none focus:bg-blue-100 dark:focus:bg-blue-900 focus:text-blue-500 rounded">Community</a>
+                <a href="#" class="block py-2 dark:text-gray-300 focus:outline-none focus:bg-blue-100 dark:focus:bg-blue-900 focus:text-blue-500 rounded">Exercises</a>
+                <a href="#" class="block py-2 dark:text-gray-300 focus:outline-none focus:bg-blue-100 dark:focus:bg-blue-900 focus:text-blue-500 rounded">Resources</a>
+                <a href="#" class="block py-2 bg-gray-100 dark:bg-gray-700 rounded-md font-bold focus:outline-none focus:ring-2 focus:ring-blue-500">New</a>
+                <a href="#" class="block py-2 font-medium flex items-center justify-center gap-2 dark:text-gray-300 focus:outline-none focus:bg-blue-100 dark:focus:bg-blue-900 focus:text-blue-500 rounded">
                     <img src="../assets/avatar.png" alt="Profile picture" class="rounded-full w-6">
                     <span>Profile</span>
                 </a>
@@ -78,13 +83,13 @@
         </nav>
     </header>
 
-    <main class="container max-w-xs mt-5 mb-5 sm:max-w-md md:max-w-2xl lg:max-w-4xl mx-auto md:mt-10 md:mb-10">
+    <main id="main-content" class="container max-w-xs mt-5 mb-5 sm:max-w-md md:max-w-2xl lg:max-w-4xl mx-auto md:mt-10 md:mb-10">
         <header class="mb-8">
             <h1 class="font-bold text-xl md:text-3xl mb-2 md:mb-4">Lists and Keys</h1>
             <p class="text-gray-500 dark:text-gray-400 mb-4 md:mb-8">Continue your learning journey with React.</p>
             <nav class="font-medium text-gray-500 dark:text-gray-400" aria-label="Breadcrumb">
-                <a href="../index.html" class="dark:text-gray-400">React Fundamentals</a> / 
-                <a href="#" class="text-black dark:text-white" aria-current="page">Lists and Keys</a>
+                <a href="../index.html" class="dark:text-gray-400 focus:outline-none focus:text-blue-500">React Fundamentals</a> / 
+                <a href="#" class="text-black dark:text-white focus:outline-none focus:text-blue-500" aria-current="page">Lists and Keys</a>
             </nav>
         </header>
         
@@ -100,7 +105,7 @@
         <section class="mb-8" aria-labelledby="example1-heading">
             <h2 id="example1-heading" class="font-bold text-lg md:text-2xl mb-4 md:mb-6">Example: Rendering a List of Items</h2>
             <figure>
-                <pre class="w-full border-2 rounded-xl leading-5 text-xs text-md lg:text-xl tracking-tighter text-gray-600 dark:text-gray-300 dark:border-gray-600 dark:bg-gray-800 mb-2 md:mb-5 p-2 md:p-5"><code>function NumberList(props) {
+                <pre class="w-full border-2 rounded-xl leading-5 text-xs text-md lg:text-xl tracking-tighter text-gray-600 dark:text-gray-300 dark:border-gray-600 dark:bg-gray-800 mb-2 md:mb-5 p-2 md:p-5 focus:outline-none focus:ring-2 focus:ring-blue-500" tabindex="0"><code>function NumberList(props) {
   const numbers = props.numbers;
   const listItems = numbers.map((number) =>
     &lt;li key={number.toString()}&gt;
@@ -122,7 +127,7 @@
         <section class="mb-8" aria-labelledby="example2-heading">
             <h2 id="example2-heading" class="font-bold text-lg md:text-2xl mb-4 md:mb-6">Example: Using Unique IDs as Keys</h2>
             <figure>
-                <pre class="w-full border-2 rounded-xl leading-5 text-xs text-md lg:text-xl tracking-tighter text-gray-600 dark:text-gray-300 dark:border-gray-600 dark:bg-gray-800 mb-2 md:mb-5 p-2 md:p-5"><code>function TodoList(props) {
+                <pre class="w-full border-2 rounded-xl leading-5 text-xs text-md lg:text-xl tracking-tighter text-gray-600 dark:text-gray-300 dark:border-gray-600 dark:bg-gray-800 mb-2 md:mb-5 p-2 md:p-5 focus:outline-none focus:ring-2 focus:ring-blue-500" tabindex="0"><code>function TodoList(props) {
   const todos = props.todos;
   return (
     &lt;ul&gt;
@@ -150,7 +155,7 @@
         <section class="mb-8" aria-labelledby="example3-heading">
             <h2 id="example3-heading" class="font-bold text-lg md:text-2xl mb-4 md:mb-6">Example: Rendering a List with Conditional Content</h2>
             <figure>
-                <pre class="w-full border-2 rounded-xl leading-5 text-xs text-md lg:text-xl tracking-tighter text-gray-600 dark:text-gray-300 dark:border-gray-600 dark:bg-gray-800 mb-2 md:mb-5 p-2 md:p-5"><code>function ShoppingList(props) {
+                <pre class="w-full border-2 rounded-xl leading-5 text-xs text-md lg:text-xl tracking-tighter text-gray-600 dark:text-gray-300 dark:border-gray-600 dark:bg-gray-800 mb-2 md:mb-5 p-2 md:p-5 focus:outline-none focus:ring-2 focus:ring-blue-500" tabindex="0"><code>function ShoppingList(props) {
   return (
     &lt;ul&gt;
       {props.items.map((item) => (
@@ -178,7 +183,7 @@
                 <label for="answer" class="block mb-2 font-medium dark:text-gray-300">Your Component Code:</label>
                 <textarea id="answer" 
                           rows="12" 
-                          class="w-full border-2 rounded-xl leading-5 text-xs text-md lg:text-xl tracking-tighter text-gray-600 dark:text-gray-300 dark:border-gray-600 dark:bg-gray-800 mb-4 md:mb-6 p-2 md:p-5" 
+                          class="w-full border-2 rounded-xl leading-5 text-xs text-md lg:text-xl tracking-tighter text-gray-600 dark:text-gray-300 dark:border-gray-600 dark:bg-gray-800 mb-4 md:mb-6 p-2 md:p-5 focus:outline-none focus:ring-2 focus:ring-blue-500" 
                           placeholder="function TaskList(props) {
   return (
     &lt;ul&gt;
@@ -203,7 +208,7 @@
 // &lt;TaskList tasks={tasks} /&gt;"
                           aria-describedby="exercise-instructions"></textarea>
                 
-                <button type="submit" class="bg-blue-500 dark:bg-blue-600 px-3 md:px-5 h-6 md:h-10 rounded-lg flex items-center font-medium text-white">
+                <button type="submit" class="bg-blue-500 dark:bg-blue-600 px-3 md:px-5 h-6 md:h-10 rounded-lg flex items-center font-medium text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
                     Check Answer
                 </button>
                 
@@ -213,17 +218,17 @@
         
         <nav class="navigation flex flex-col gap-3 md:gap-4" aria-label="Page navigation">
             <div class="flex flex-col sm:flex-row justify-between gap-3">
-                <a href="conditional-rendering.html" class="bg-gray-100 dark:bg-gray-700 dark:text-gray-300 px-3 md:px-5 h-6 md:h-10 rounded-lg flex items-center font-medium justify-center sm:justify-start">
+                <a href="conditional-rendering.html" class="bg-gray-100 dark:bg-gray-700 dark:text-gray-300 px-3 md:px-5 h-6 md:h-10 rounded-lg flex items-center font-medium justify-center sm:justify-start focus:outline-none focus:ring-2 focus:ring-blue-500">
                     <span class="hidden md:inline">← Previous: Conditional Rendering</span>
                     <span class="md:hidden">← Previous</span>
                 </a>
-                <a href="forms-and-controlled.html" class="bg-blue-500 dark:bg-blue-600 px-3 md:px-5 h-6 md:h-10 rounded-lg flex items-center font-medium text-white justify-center sm:justify-start">
+                <a href="forms-and-controlled.html" class="bg-blue-500 dark:bg-blue-600 px-3 md:px-5 h-6 md:h-10 rounded-lg flex items-center font-medium text-white justify-center sm:justify-start focus:outline-none focus:ring-2 focus:ring-blue-500">
                     <span class="hidden md:inline">Next: Forms and Controlled Components →</span>
                     <span class="md:hidden">Next →</span>
                 </a>
             </div>
             <div class="flex justify-center sm:justify-start">
-                <a href="../index.html" class="bg-gray-100 dark:bg-gray-700 dark:text-gray-300 px-3 md:px-5 h-6 md:h-10 rounded-lg flex items-center font-medium justify-center sm:justify-start">
+                <a href="../index.html" class="bg-gray-100 dark:bg-gray-700 dark:text-gray-300 px-3 md:px-5 h-6 md:h-10 rounded-lg flex items-center font-medium justify-center sm:justify-start focus:outline-none focus:ring-2 focus:ring-blue-500">
                     <span class="hidden md:inline">Main Menu</span>
                     <span class="md:hidden">Main Page</span>
                 </a>
@@ -248,6 +253,8 @@
                 closeIcon.classList.remove('hidden');
                 mobileMenuButton.setAttribute('aria-expanded', 'true');
                 mobileMenu.setAttribute('aria-hidden', 'false');
+                const firstMenuItem = mobileMenu.querySelector('a');
+                if (firstMenuItem) firstMenuItem.focus();
             } else {
                 mobileMenu.classList.remove('translate-y-0', 'opacity-100', 'pointer-events-auto');
                 mobileMenu.classList.add('transform', '-translate-y-2', 'opacity-0', 'pointer-events-none');
@@ -255,23 +262,34 @@
                 closeIcon.classList.add('hidden');
                 mobileMenuButton.setAttribute('aria-expanded', 'false');
                 mobileMenu.setAttribute('aria-hidden', 'true');
+                mobileMenuButton.focus();
             }
         }
 
         mobileMenuButton.addEventListener('click', toggleMobileMenu);
+        
+        mobileMenuButton.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                toggleMobileMenu();
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && isMenuOpen) {
+                toggleMobileMenu();
+            }
+        });
 
         const mobileMenuLinks = mobileMenu.querySelectorAll('a');
         mobileMenuLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                toggleMobileMenu();
-            });
+            link.addEventListener('click', toggleMobileMenu);
         });
 
         function checkAnswer() {
             const answer = document.getElementById('answer').value;
             const resultDiv = document.getElementById('result');
             
-            // Check if the answer contains the required elements
             if (answer.includes('TaskList') && 
                 answer.includes('props.tasks') &&
                 answer.includes('map') &&
