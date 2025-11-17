@@ -4,21 +4,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Components and JSX - React Fundamentals</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
 </head>
-<body>
-    <div class="container">
-        <h1>Components and JSX</h1>
-        
-        <div class="theory">
-            <h2>Understanding Components and JSX</h2>
-            <p>React components are independent and reusable bits of code that describe a part of the user interface. Components can be thought of as JavaScript functions that receive inputs (called props) and return React elements describing what should appear on the screen.</p>
-            <p>JSX stands for JavaScript XML and allows us to write HTML-like code in our JavaScript files. It is a syntax extension for JavaScript that looks similar to HTML but is transformed into regular JavaScript during the build process.</p>
-            <p>Components can be either functional (stateless) or class-based (stateful). Functional components are simpler and are preferred for components that only need to render UI based on props.</p>
+<body class="bg-white">
+    <!-- Header -->
+    <header class="border-b border-gray-200" role="banner">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+                <img src="../assets/logo.svg" alt="React Learning logo" class="h-6 w-auto" aria-hidden="true">
+                <a href="../index.html" class="text-xl font-bold text-gray-900 hover:text-orange-300 transition" aria-label="React Learning homepage">React Learning</a>
+            </div>
+            <nav class="flex items-center space-x-6" aria-label="Main navigation">
+                <a href="#" class="text-gray-900 hover:text-gray-700">Tutorials</a>
+                <a href="#" class="text-gray-900 hover:text-gray-700">Community</a>
+                <a href="#" class="text-gray-900 hover:text-gray-700">Exercises</a>
+                <a href="#" class="text-gray-900 hover:text-gray-700">Resources</a>
+                <button class="bg-gray-100 hover:bg-gray-200 text-gray-900 px-4 py-2 rounded-md font-bold transition-colors" aria-label="Sign in">Sign in</button>
+            </nav>
         </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-6 py-8" role="main" aria-label="Lesson content">
+        <nav class="text-sm text-gray-600 mb-8" aria-label="Breadcrumb">
+            <a href="../index.html" class="hover:text-gray-900">React Fundamentals</a> / <span aria-current="page">Components and JSX</span>
+        </nav>
         
-        <div class="example">
-            <h2>Example: Creating a Simple Component</h2>
-            <pre><code>function Welcome(props) {
+        <h1 class="text-4xl font-bold text-gray-900 mb-2" tabindex="0" id="page-title">Components and JSX</h1>
+        <p class="text-lg text-gray-700 mb-2">Learn how to create reusable UI components and use JSX syntax to define their structure.</p>
+        
+        <section class="theory mb-8" aria-labelledby="understanding-components-title">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4" tabindex="0" id="understanding-components-title">Understanding Components</h2>
+            <p class="text-gray-700 leading-relaxed mb-4">React components are independent and reusable bits of code that describe a part of the user interface. Components can be thought of as JavaScript functions that receive inputs (called props) and return React elements describing what should appear on the screen.</p>
+            <p class="text-gray-700 leading-relaxed mb-4">Components can be either functional (stateless) or class-based (stateful). Functional components are simpler and are preferred for components that only need to render UI based on props.</p>
+        </section>
+        
+        <section class="theory mb-8" aria-labelledby="jsx-syntax-title">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4" tabindex="0" id="jsx-syntax-title">JSX Syntax</h2>
+            <p class="text-gray-700 leading-relaxed mb-4">JSX stands for JavaScript XML and allows us to write HTML-like code in our JavaScript files. It is a syntax extension for JavaScript that looks similar to HTML but is transformed into regular JavaScript during the build process.</p>
+            <p class="text-gray-700 leading-relaxed mb-4">JSX allows embedding expressions in curly braces, making it easy to combine JavaScript logic with HTML structure.</p>
+        </section>
+        
+        <section class="example mb-8" aria-labelledby="example-title">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4" tabindex="0" id="example-title">Example</h2>
+            <p class="text-gray-700 leading-relaxed mb-4">Here's a simple example of a React component using JSX:</p>
+            <pre class="bg-white border border-gray-300 rounded-lg p-4 overflow-x-auto" role="img" aria-label="Code example showing a React component"><code class="text-sm text-gray-800">function Welcome(props) {
   return &lt;h1&gt;Hello, {props.name}!&lt;/h1&gt;;
 }
 
@@ -26,57 +60,58 @@
 const element = &lt;Welcome name="Sarah" /&gt;;
 
 // Renders: &lt;h1&gt;Hello, Sarah!&lt;/h1&gt;</code></pre>
-        </div>
+        </section>
         
-        <div class="example">
-            <h2>JSX Features</h2>
-            <p>JSX allows embedding expressions in curly braces:</p>
-            <pre><code>function FormatName(user) {
-  return &lt;h1&gt;Hello, {user.firstName + ' ' + user.lastName}!&lt;/h1&gt;;
-}</code></pre>
-        </div>
-        
-        <div class="exercise">
-            <h2>Interactive Exercise</h2>
-            <p>Write JSX code that creates a React component called "Product" which takes "name" and "price" as props and displays them in a formatted string like "Product: Laptop - $999".</p>
-            <p>For example, if the component is used as &lt;Product name="Laptop" price="999" /&gt;, it should render "Product: Laptop - $999".</p>
+        <section class="exercise mb-8" aria-labelledby="exercise-title">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4" tabindex="0" id="exercise-title">Exercise</h2>
+            <p class="text-gray-700 leading-relaxed mb-4">Create a component named 'Greeting' that accepts a 'name' prop and displays a greeting message. Use JSX to render the component with the name 'Alex'.</p>
             
-            <label for="answer">Your Component Code:</label>
-            <textarea id="answer" rows="6" placeholder="function Product(props) {
+            <label for="answer" class="block text-gray-700 font-medium mb-2">Your Component Code:</label>
+            <textarea 
+                id="answer" 
+                rows="10" 
+                class="w-full border border-gray-300 rounded-lg p-4 font-mono text-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" 
+                placeholder="function Greeting(props) {
   // Your code here
   return &lt;div&gt;...&lt;/div&gt;;
-}"></textarea>
+}"
+                aria-label="Code editor for your solution"
+                aria-describedby="exercise-description"></textarea>
+            <div id="exercise-description" class="sr-only">Enter your React component code in the text area above</div>
             
-            <button onclick="checkAnswer()">Check Answer</button>
+            <button 
+                onclick="checkAnswer()" 
+                class="mt-4 bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-6 rounded-lg transition-colors"
+                aria-label="Check your answer"
+                aria-describedby="result">Check Answer</button>
             
-            <div id="result" class="result"></div>
-        </div>
+            <div id="result" class="result mt-4 p-4 rounded-lg hidden" role="status" aria-live="polite" aria-atomic="true"></div>
+        </section>
         
-        <div class="navigation">
-            <a href="../index.html">Main Menu</a>
-            <a href="props-and-state.html">Next: Props and State →</a>
-        </div>
-    </div>
+        <nav class="navigation flex flex-row gap-4 mt-12 pt-8 border-t border-gray-200" aria-label="Lesson navigation">
+            <a href="../index.html" class="bg-gray-100 hover:bg-gray-200 text-gray-800 py-2 px-6 rounded-md transition-colors" aria-label="Back to main menu">Back to Main Menu</a>
+            <a href="props-and-state.html" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-6 rounded-md transition-colors ml-auto" aria-label="Go to next lesson: Props and State">Next</a>
+        </nav>
+    </main>
 
+    <script src="../keyboard-navigation.js"></script>
     <script>
         function checkAnswer() {
             const answer = document.getElementById('answer').value;
             const resultDiv = document.getElementById('result');
             
             // Check if the answer contains the required elements
-            if (answer.includes('Product') && 
+            if (answer.includes('Greeting') && 
                 (answer.includes('props.name') || answer.includes('props[\'name\']') || answer.includes('{props.name}')) &&
-                (answer.includes('props.price') || answer.includes('props[\'price\']') || answer.includes('{props.price}')) &&
-                answer.includes('return') &&
-                (answer.includes('Product:') || answer.includes('product:'))) {
+                answer.includes('return')) {
                 
-                resultDiv.className = 'result success';
+                resultDiv.className = 'result success bg-green-50 border border-green-200 text-green-800';
                 resultDiv.style.display = 'block';
-                resultDiv.innerHTML = 'Correct! You have successfully created a Product component that renders name and price.';
+                resultDiv.innerHTML = '<strong>Feedback:</strong> Your solution is correct! You\'ve successfully created a component and used JSX to render it with a prop.';
             } else {
-                resultDiv.className = 'result error';
+                resultDiv.className = 'result error bg-red-50 border border-red-200 text-red-800';
                 resultDiv.style.display = 'block';
-                resultDiv.innerHTML = 'Incorrect. Make sure your component accepts props and returns the formatted string.';
+                resultDiv.innerHTML = '<strong>Feedback:</strong> Incorrect. Make sure your component accepts a name prop and returns a greeting message.';
             }
         }
     </script>

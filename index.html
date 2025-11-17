@@ -4,56 +4,167 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>React Fundamentals Learning Platform</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-    <div class="container">
-        <h1>React Fundamentals Learning Platform</h1>
-        
-        <div class="description">
-            <p>Master the fundamentals of React with these 7 interactive learning modules. 
-            Each module contains theory, examples, and interactive exercises to test your knowledge.</p>
+<body class="font-[Lexend] bg-[var(--background-light)] dark:bg-[var(--background-dark)] dark:text-[var(--text-dark)]">
+    <header class="bg-[var(--background-light)] border-b border-[var(--border-light)] dark:border-[var(--border-dark)] sticky top-0 z-50 dark:bg-[var(--background-dark)]">
+        <div class="px-4 md:px-6 lg:px-8 py-3 md:py-4 flex items-center justify-between">
+            <div class="flex items-center gap-2 md:gap-3">
+                <img src="assets/logo.svg"
+                     class="w-[var(--logo-size)] h-[var(--logo-size)] dark:invert"
+                     alt="React Learning logo">
+                <a href="#" class="text-lg md:text-2xl font-bold hover:text-[var(--accent)] transition cursor-pointer" aria-label="React Learning homepage">React Learning</a>
+            </div>
+            
+            <nav class="hidden md:flex items-center gap-4 lg:gap-6" aria-label="Main navigation">
+                <a href="#" class="hover:text-[var(--accent)] transition">Tutorials</a>
+                <a href="#" class="hover:text-[var(--accent)] transition">Community</a>
+                <a href="#" class="hover:text-[var(--accent)] transition">Exercises</a>
+                <a href="#" class="hover:text-[var(--accent)] transition">Resources</a>
+                <a href="#" class="bg-[var(--surface-light)] dark:bg-[var(--surface-dark)] px-5 md:px-7 h-[var(--nav-height)] rounded-md hover:bg-[var(--surface-light-hover)] dark:hover:bg-[var(--surface-dark-hover)] transition flex items-center" aria-label="New content">New</a>
+                <a href="#" aria-label="User profile">
+                    <img src="assets/avatar.png" alt="Profile" class="w-[var(--nav-height)] h-[var(--nav-height)] rounded-full cursor-pointer">
+                </a>
+            </nav>
+            
+            <button id="mobile-menu-btn" class="md:hidden text-[var(--text-light)] dark:text-[var(--text-dark)] cursor-pointer" 
+                    aria-label="Toggle navigation menu" 
+                    aria-expanded="false">
+                <svg id="hamburger-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+
+                <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+
+            <div id="menu-backdrop" class="hidden fixed inset-0 bg-black/50 z-40 md:hidden"></div>
+
+            <nav id="mobile-menu" class="hidden fixed top-[calc(var(--nav-height)+1.5rem)] left-0 right-0 md:hidden flex flex-col items-stretch gap-2 px-4 py-4 bg-[var(--background-light)] dark:bg-[var(--background-dark-secondary)] z-50 shadow-lg mx-2 rounded-lg">
+                <a href="#" class="w-full bg-[var(--surface-light)] dark:bg-[var(--surface-dark)] hover:bg-[var(--surface-light-hover)] dark:hover:bg-[var(--surface-dark-hover)] transition py-3 px-4 rounded-md text-[var(--text-light)] dark:text-[var(--text-dark)] text-center">Tutorials</a>
+                <a href="#" class="w-full bg-[var(--surface-light)] dark:bg-[var(--surface-dark)] hover:bg-[var(--surface-light-hover)] dark:hover:bg-[var(--surface-dark-hover)] transition py-3 px-4 rounded-md text-[var(--text-light)] dark:text-[var(--text-dark)] text-center">Community</a>
+                <a href="#" class="w-full bg-[var(--surface-light)] dark:bg-[var(--surface-dark)] hover:bg-[var(--surface-light-hover)] dark:hover:bg-[var(--surface-dark-hover)] transition py-3 px-4 rounded-md text-[var(--text-light)] dark:text-[var(--text-dark)] text-center">Exercises</a>
+                <a href="#" class="w-full bg-[var(--surface-light)] dark:bg-[var(--surface-dark)] hover:bg-[var(--surface-light-hover)] dark:hover:bg-[var(--surface-dark-hover)] transition py-3 px-4 rounded-md text-[var(--text-light)] dark:text-[var(--text-dark)] text-center">Resources</a>
+                <a href="#" class="w-full bg-[var(--surface-light)] dark:bg-[var(--surface-dark)] px-4 rounded-md hover:bg-[var(--surface-light-hover)] dark:hover:bg-[var(--surface-dark-hover)] transition py-3 text-[var(--text-light)] dark:text-[var(--text-dark)] text-center">New</a>
+                <a href="#" class="w-full py-2 flex justify-center">
+                    <img src="assets/avatar.png" alt="Profile" class="w-[var(--nav-height)] h-[var(--nav-height)] rounded-full cursor-pointer">
+                </a>
+            </nav>
         </div>
+    </header>
+
+    
+
+    <main id="main-content" class="container px-4 mx-auto my-10">
+        <h1 class="text-4xl font-bold text-[var(--text-light)] dark:text-[var(--text-dark)] mb-2">Welcome back, Sarah!</h1>
+        <p class="text-[var(--text-light-secondary)] dark:text-[var(--text-dark-secondary)] mb-8">Continue your learning journey with React.</p>
         
-        <div class="nav-grid">
-            <div class="nav-card">
-                <a href="pages/components-and-jsx.html">Components and JSX</a>
-                <p>Learn how to create and structure React components using JSX syntax</p>
-            </div>
+        <section class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 md:gap-5" aria-label="Learning modules">
+            <article aria-labelledby="title-components-jsx" class="nav-card group bg-[var(--background-light)] dark:bg-[var(--background-dark)] hover:bg-[var(--surface-light)] dark:hover:bg-[var(--surface-dark)] overflow-hidden pointer flex flex-col transition hover:scale-105 hover:shadow-lg rounded-lg">
+                <a href="pages/components-and-jsx.html" aria-describedby="desc-components-jsx">
+                    <img src="assets/introduction-to-react.jpg" alt="Components and JSX" class="rounded-md w-full h-40 sm:h-50 xl:h-60 object-cover dark:invert">
+                    <div class="py-4 px-2 flex flex-col flex-grow">
+                        <h3 id="title-components-jsx" class="font-semibold text-[var(--text-light)] dark:text-[var(--text-dark)] group-hover:text-[var(--accent)] transition mb-2">Components and JSX</h3>
+                        <p id="desc-components-jsx" class="text-[var(--text-light-secondary)] dark:text-[var(--text-dark-secondary)] text-sm">Learn how to create and structure React components using JSX syntax</p>
+                    </div>
+                </a>
+            </article>
             
-            <div class="nav-card">
-                <a href="pages/props-and-state.html">Props and State</a>
-                <p>Understand how to pass data using props and manage component state</p>
-            </div>
+            <article aria-labelledby="title-props-state" class="nav-card group bg-[var(--background-light)] dark:bg-[var(--background-dark)] hover:bg-[var(--surface-light)] dark:hover:bg-[var(--surface-dark)] overflow-hidden pointer flex flex-col transition hover:scale-105 hover:shadow-lg rounded-lg">
+                <a href="pages/props-and-state.html" aria-describedby="desc-props-state">
+                    <img src="assets/components-and-jsx.jpg" alt="Props and State" class="rounded-md w-full h-40 sm:h-50 xl:h-60 object-cover dark:invert">
+                    <div class="py-4 px-2 flex flex-col flex-grow">
+                        <h3 id="title-props-state" class="font-semibold text-[var(--text-light)] dark:text-[var(--text-dark)] group-hover:text-[var(--accent)] transition mb-2">Props and State</h3>
+                        <p id="desc-props-state" class="text-[var(--text-light-secondary)] dark:text-[var(--text-dark-secondary)] text-sm">Understand how to pass data using props and manage component state</p>
+                    </div>
+                </a>
+            </article>
             
-            <div class="nav-card">
-                <a href="pages/event-handling.html">Event Handling</a>
-                <p>Handle user interactions and events in React components</p>
-            </div>
+            <article aria-labelledby="title-event-handling" class="nav-card group bg-[var(--background-light)] dark:bg-[var(--background-dark)] hover:bg-[var(--surface-light)] dark:hover:bg-[var(--surface-dark)] overflow-hidden pointer flex flex-col transition hover:scale-105 hover:shadow-lg rounded-lg">
+                <a href="pages/event-handling.html" aria-describedby="desc-event-handling">
+                    <img src="assets/state-management.jpg" alt="Event Handling" class="rounded-md w-full h-40 sm:h-50 xl:h-60 object-cover dark:invert">
+                    <div class="py-4 px-2 flex flex-col flex-grow">
+                        <h3 id="title-event-handling" class="font-semibold text-[var(--text-light)] dark:text-[var(--text-dark)] group-hover:text-[var(--accent)] transition mb-2">Event Handling</h3>
+                        <p id="desc-event-handling" class="text-[var(--text-light-secondary)] dark:text-[var(--text-dark-secondary)] text-sm">Handle user interactions and events in React components</p>
+                    </div>
+                </a>
+            </article>
             
-            <div class="nav-card">
-                <a href="pages/conditional-rendering.html">Conditional Rendering</a>
-                <p>Render different elements based on conditions in React</p>
-            </div>
+            <article aria-labelledby="title-conditional-rendering" class="nav-card group bg-[var(--background-light)] dark:bg-[var(--background-dark)] hover:bg-[var(--surface-light)] dark:hover:bg-[var(--surface-dark)] overflow-hidden pointer flex flex-col transition hover:scale-105 hover:shadow-lg rounded-lg">
+                <a href="pages/conditional-rendering.html" aria-describedby="desc-conditional-rendering">
+                    <img src="assets/event-handling.jpg" alt="Conditional Rendering" class="rounded-md w-full h-40 sm:h-50 xl:h-60 object-cover dark:invert">
+                    <div class="py-4 px-2 flex flex-col flex-grow">
+                        <h3 id="title-conditional-rendering" class="font-semibold text-[var(--text-light)] dark:text-[var(--text-dark)] group-hover:text-[var(--accent)] transition mb-2">Conditional Rendering</h3>
+                        <p id="desc-conditional-rendering" class="text-[var(--text-light-secondary)] dark:text-[var(--text-dark-secondary)] text-sm">Render different elements based on conditions in React</p>
+                    </div>
+                </a>
+            </article>
             
-            <div class="nav-card">
-                <a href="pages/lists-and-keys.html">Lists and Keys</a>
-                <p>Create dynamic lists and properly use keys in React</p>
-            </div>
+            <article aria-labelledby="title-lists-keys" class="nav-card group bg-[var(--background-light)] dark:bg-[var(--background-dark)] hover:bg-[var(--surface-light)] dark:hover:bg-[var(--surface-dark)] overflow-hidden pointer flex flex-col transition hover:scale-105 hover:shadow-lg rounded-lg">
+                <a href="pages/lists-and-keys.html" aria-describedby="desc-lists-keys">
+                    <img src="assets/conditional-rendering.jpg" alt="Lists and Keys" class="rounded-md w-full h-40 sm:h-50 xl:h-60 object-cover dark:invert">
+                    <div class="py-4 px-2 flex flex-col flex-grow">
+                        <h3 id="title-lists-keys" class="font-semibold text-[var(--text-light)] dark:text-[var(--text-dark)] group-hover:text-[var(--accent)] transition mb-2">Lists and Keys</h3>
+                        <p id="desc-lists-keys" class="text-[var(--text-light-secondary)] dark:text-[var(--text-dark-secondary)] text-sm">Create dynamic lists and properly use keys in React</p>
+                    </div>
+                </a>
+            </article>
             
-            <div class="nav-card">
-                <a href="pages/forms-and-controlled.html">Forms and Controlled Components</a>
-                <p>Handle form inputs and create controlled components</p>
-            </div>
+            <article aria-labelledby="title-forms-controlled" class="nav-card group bg-[var(--background-light)] dark:bg-[var(--background-dark)] hover:bg-[var(--surface-light)] dark:hover:bg-[var(--surface-dark)] overflow-hidden pointer flex flex-col transition hover:scale-105 hover:shadow-lg rounded-lg">
+                <a href="pages/forms-and-controlled.html" aria-describedby="desc-forms-controlled">
+                    <img src="assets/lists-and-keys.jpg" alt="Forms and Controlled Components" class="rounded-md w-full h-40 sm:h-50 xl:h-60 object-cover dark:invert">
+                    <div class="py-4 px-2 flex flex-col flex-grow">
+                        <h3 id="title-forms-controlled" class="font-semibold text-[var(--text-light)] dark:text-[var(--text-dark)] group-hover:text-[var(--accent)] transition mb-2">Forms and Controlled Components</h3>
+                        <p id="desc-forms-controlled" class="text-[var(--text-light-secondary)] dark:text-[var(--text-dark-secondary)] text-sm">Handle form inputs and create controlled components</p>
+                    </div>
+                </a>
+            </article>
             
-            <div class="nav-card">
-                <a href="pages/lifecycle-hooks.html">Lifecycle Methods and Hooks</a>
-                <p>Manage component lifecycle and use React Hooks</p>
-            </div>
+            <article aria-labelledby="title-lifecycle-hooks" class="nav-card group bg-[var(--background-light)] dark:bg-[var(--background-dark)] hover:bg-[var(--surface-light)] dark:hover:bg-[var(--surface-dark)] overflow-hidden pointer flex flex-col transition hover:scale-105 hover:shadow-lg rounded-lg">
+                <a href="pages/lifecycle-hooks.html" aria-describedby="desc-lifecycle-hooks">
+                    <img src="assets/forms-in-react.jpg" alt="Lifecycle Methods and Hooks" class="rounded-md w-full h-40 sm:h-50 xl:h-60 object-cover dark:invert">
+                    <div class="py-4 px-2 flex flex-col flex-grow">
+                        <h3 id="title-lifecycle-hooks" class="font-semibold text-[var(--text-light)] dark:text-[var(--text-dark)] group-hover:text-[var(--accent)] transition mb-2">Lifecycle Methods and Hooks</h3>
+                        <p id="desc-lifecycle-hooks" class="text-[var(--text-light-secondary)] dark:text-[var(--text-dark-secondary)] text-sm">Manage component lifecycle and use React Hooks</p>
+                    </div>
+                </a>
+            </article>
+        </section>
+    </main>
+
+    <footer class="border-[var(--border-light)] dark:border-[var(--border-dark)] border-t p-4">
+        <h3 class="text-lg text-center p-2">Brought to you by:</h3>
+        <div class="flex flex-row justify-center gap-2">
+            <a href="https://github.com/WorldOfPets" class="border-2 border-[var(--border-light)] dark:border-[var(--border-dark)] rounded-full">
+                <img src="https://avatars.githubusercontent.com/u/71321595?v=4" alt="Profile" class="w-[var(--nav-height)] h-[var(--nav-height)] rounded-full cursor-pointer">
+            </a>
+            <a href="https://github.com/hilizzun" class="border-2 border-[var(--border-light)] dark:border-[var(--border-dark)] rounded-full">
+                <img src="https://avatars.githubusercontent.com/u/149463460?v=4" alt="Profile" class="w-[var(--nav-height)] h-[var(--nav-height)] rounded-full cursor-pointer">
+            </a>
+            <a href="https://github.com/leonorino" class="border-2 border-[var(--border-light)] dark:border-[var(--border-dark)] rounded-full">
+                <img src="https://avatars.githubusercontent.com/u/38379012?v=4" alt="Profile" class="w-[var(--nav-height)] h-[var(--nav-height)] rounded-full cursor-pointer">
+            </a>
+            <a href="https://github.com/romatrooy" class="border-2 border-[var(--border-light)] dark:border-[var(--border-dark)] rounded-full">
+                <img src="https://avatars.githubusercontent.com/u/147127848?v=4" alt="Profile" class="w-[var(--nav-height)] h-[var(--nav-height)] rounded-full cursor-pointer">
+            </a>
+            <a href="https://github.com/Perunitsa" class="border-2 border-[var(--border-light)] dark:border-[var(--border-dark)] rounded-full">
+                <img src="https://avatars.githubusercontent.com/u/188060651?v=4" alt="Profile" class="w-[var(--nav-height)] h-[var(--nav-height)] rounded-full cursor-pointer">
+            </a>
+            <a href="https://github.com/cybersj5" class="border-2 border-[var(--border-light)] dark:border-[var(--border-dark)] rounded-full">
+                <img src="https://avatars.githubusercontent.com/u/163285309?v=4" alt="Profile" class="w-[var(--nav-height)] h-[var(--nav-height)] rounded-full cursor-pointer">
+            </a>
+            <a href="https://github.com/GitHEXual" class="border-2 border-[var(--border-light)] dark:border-[var(--border-dark)] rounded-full">
+                <img src="https://avatars.githubusercontent.com/u/166127879?v=4" alt="Profile" class="w-[var(--nav-height)] h-[var(--nav-height)] rounded-full cursor-pointer">
+            </a>
         </div>
-        
-        <footer>
-            <p>React Fundamentals Learning Platform - Legacy HTML Project</p>
-        </footer>
-    </div>
+    </footer>
+    
+    <script src="keyboard-navigation.js"></script>
+    <script src="hamburger.js"></script>
 </body>
 </html>
