@@ -1,5 +1,9 @@
 @use 'variables'
 
+.hidden 
+  display: none !important // !important помогает перебить другие стили, если они случайно изменят display
+
+
 header
   background-color: var(--bg-color)
   border-bottom: 1px solid var(--border-color)
@@ -155,3 +159,11 @@ header
 
 .avatar
   border-radius: calc(infinity * 1px)
+  width: 40px
+  height: 40px
+  object-fit: cover
+  cursor: pointer
+  transition: opacity 0.2s ease
+
+  &:hover
+    opacity: 0.8

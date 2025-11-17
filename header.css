@@ -40,6 +40,10 @@
   --nav-border: #334155;
 }
 
+.hidden {
+  display: none !important;
+}
+
 header {
   background-color: var(--bg-color);
   border-bottom: 1px solid var(--border-color);
@@ -230,7 +234,14 @@ header #mobile-menu .profile-link img {
 
 .avatar {
   border-radius: calc(infinity * 1px);
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
   cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+.avatar:hover {
+  opacity: 0.8;
 }
 
 /*# sourceMappingURL=header.css.map */
