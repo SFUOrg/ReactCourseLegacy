@@ -222,9 +222,14 @@ header #mobile-menu .profile-link {
   justify-content: center;
 }
 header #mobile-menu .profile-link img {
-  width: var(--nav-height);
+  width: var(--nav-width);
   height: var(--nav-height);
   border-radius: 50%;
+  cursor: pointer;
+}
+
+.avatar {
+  border-radius: calc(infinity * 1px);
   cursor: pointer;
 }
 
