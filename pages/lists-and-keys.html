@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lists and Keys - React Fundamentals</title>
+    <meta name="description" content="Learn about React lists and keys - how to render multiple components efficiently using keys for optimal performance">
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <script>
@@ -28,22 +29,28 @@
             <div class="flex items-center gap-2 sm:gap-3 lg:gap-4">
                 <img src="../assets/logo.svg"
                      class="w-2 sm:w-3 lg:w-4 h-2 sm:h-3 lg:h-4"
-                     alt="logo">
+                     alt="React Learning Logo">
                 <a href="../index.html" class="font-bold cursor-pointer">React Learning</a>
             </div>
             
-            <nav class="hidden md:flex items-center gap-5 lg:gap-8 font-medium">
+            <nav class="hidden md:flex items-center gap-5 lg:gap-8 font-medium" aria-label="Main navigation">
                 <a href="#" class="dark:text-gray-300">Tutorials</a>
                 <a href="#" class="dark:text-gray-300">Community</a>
                 <a href="#" class="dark:text-gray-300">Exercises</a>
                 <a href="#" class="dark:text-gray-300">Resources</a>
-                <a href="#" class="bg-gray-100 dark:bg-gray-700 px-4 lg:px-7 h-6 lg:h-10 rounded-md flex items-center font-bold">New</a>
-                <a href="#">
-                    <img src="../assets/avatar.png" alt="Profile" class="rounded-full cursor-pointer w-6 lg:w-10">
+                <a href="#" class="bg-gray-100 dark:bg-gray-700 px-4 lg:px-7 h-6 lg:h-10 rounded-md flex items-center font-bold" aria-label="New content">
+                    New
+                </a>
+                <a href="#" aria-label="User profile">
+                    <img src="../assets/avatar.png" alt="Profile picture" class="rounded-full cursor-pointer w-6 lg:w-10">
                 </a>
             </nav>
 
-            <button id="mobileMenuButton" class="md:hidden text-gray-800 dark:text-gray-200 cursor-pointer">
+            <button id="mobileMenuButton" 
+                    class="md:hidden text-gray-800 dark:text-gray-200 cursor-pointer"
+                    aria-label="Toggle mobile menu"
+                    aria-expanded="false"
+                    aria-controls="mobileMenu">
                 <svg id="menuIcon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                 </svg>
@@ -53,7 +60,10 @@
             </button>
         </div>
 
-        <div id="mobileMenu" class="md:hidden bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 absolute top-full left-0 w-full transform -translate-y-2 opacity-0 transition-all duration-300 ease-in-out pointer-events-none">
+        <nav id="mobileMenu" 
+             class="md:hidden bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 absolute top-full left-0 w-full transform -translate-y-2 opacity-0 transition-all duration-300 ease-in-out pointer-events-none"
+             aria-label="Mobile navigation"
+             aria-hidden="true">
             <div class="px-4 py-4 font-medium text-center">
                 <a href="#" class="block py-2 dark:text-gray-300">Tutorials</a>
                 <a href="#" class="block py-2 dark:text-gray-300">Community</a>
@@ -61,27 +71,36 @@
                 <a href="#" class="block py-2 dark:text-gray-300">Resources</a>
                 <a href="#" class="block py-2 bg-gray-100 dark:bg-gray-700 rounded-md font-bold">New</a>
                 <a href="#" class="block py-2 font-medium flex items-center justify-center gap-2 dark:text-gray-300">
-                    <img src="../assets/avatar.png" alt="Profile" class="rounded-full w-6"><span>Profile</span>
+                    <img src="../assets/avatar.png" alt="Profile picture" class="rounded-full w-6">
+                    <span>Profile</span>
                 </a>
             </div>
-        </div>
+        </nav>
     </header>
 
     <main class="container max-w-xs mt-5 mb-5 sm:max-w-md md:max-w-2xl lg:max-w-4xl mx-auto md:mt-10 md:mb-10">
-        <h1 class="font-bold text-xl md:text-3xl mb-2 md:mb-4">Lists and Keys</h1>
-        <p class="text-gray-500 dark:text-gray-400 mb-4 md:mb-8">Continue your learning journey with React.</p>
-        <nav class="font-medium text-gray-500 dark:text-gray-400 mb-4 md:mb-8"><a href="../index.html" class="dark:text-gray-400">React Fundamentals</a> / <a href="#" class="text-black dark:text-white">Lists and Keys</a></nav>
+        <header class="mb-8">
+            <h1 class="font-bold text-xl md:text-3xl mb-2 md:mb-4">Lists and Keys</h1>
+            <p class="text-gray-500 dark:text-gray-400 mb-4 md:mb-8">Continue your learning journey with React.</p>
+            <nav class="font-medium text-gray-500 dark:text-gray-400" aria-label="Breadcrumb">
+                <a href="../index.html" class="dark:text-gray-400">React Fundamentals</a> / 
+                <a href="#" class="text-black dark:text-white" aria-current="page">Lists and Keys</a>
+            </nav>
+        </header>
         
-        <section class="mb-4 md:mb-8">
-            <h2 class="font-bold text-lg md:text-2xl mb-2 md:mb-4">Understanding Lists and Keys in React</h2>
-            <p class="dark:text-gray-300">Rendering multiple components in React is typically done using the Array.map() method. When creating lists of elements in React, each item in the list needs a unique "key" prop. Keys help React identify which items have changed, are added, or are removed.</p>
-            <p class="dark:text-gray-300">Keys should be given to the elements inside the array.map() call. The best way to pick a key is to use a string that uniquely identifies a list item among its siblings. Most often you would use IDs from your data as keys.</p>
-            <p class="dark:text-gray-300">If you don't have stable IDs for rendered items, you may use the item index as a key as a last resort. However, this approach may cause issues if the items can reorder, so it's not recommended if the order of items may change.</p>
-        </section>
+        <article class="mb-8">
+            <h2 class="font-bold text-lg md:text-2xl mb-4 md:mb-6">Understanding Lists and Keys in React</h2>
+            <div class="space-y-4 dark:text-gray-300">
+                <p>Rendering multiple components in React is typically done using the Array.map() method. When creating lists of elements in React, each item in the list needs a unique "key" prop. Keys help React identify which items have changed, are added, or are removed.</p>
+                <p>Keys should be given to the elements inside the array.map() call. The best way to pick a key is to use a string that uniquely identifies a list item among its siblings. Most often you would use IDs from your data as keys.</p>
+                <p>If you don't have stable IDs for rendered items, you may use the item index as a key as a last resort. However, this approach may cause issues if the items can reorder, so it's not recommended if the order of items may change.</p>
+            </div>
+        </article>
         
-        <section class="mb-4 md:mb-8">
-            <h2 class="font-bold text-lg md:text-2xl mb-2 md:mb-4">Example: Rendering a List of Items</h2>
-            <pre class="w-full border-2 rounded-xl leading-5 text-xs text-md lg:text-xl tracking-tighter text-gray-600 dark:text-gray-300 dark:border-gray-600 dark:bg-gray-800 mb-2 md:mb-5 p-2 md:p-5"><code>function NumberList(props) {
+        <section class="mb-8" aria-labelledby="example1-heading">
+            <h2 id="example1-heading" class="font-bold text-lg md:text-2xl mb-4 md:mb-6">Example: Rendering a List of Items</h2>
+            <figure>
+                <pre class="w-full border-2 rounded-xl leading-5 text-xs text-md lg:text-xl tracking-tighter text-gray-600 dark:text-gray-300 dark:border-gray-600 dark:bg-gray-800 mb-2 md:mb-5 p-2 md:p-5"><code>function NumberList(props) {
   const numbers = props.numbers;
   const listItems = numbers.map((number) =>
     &lt;li key={number.toString()}&gt;
@@ -94,11 +113,16 @@
 }
 
 // Usage: &lt;NumberList numbers={[1, 2, 3, 4, 5]} /&gt;</code></pre>
+                <figcaption class="text-sm text-gray-500 dark:text-gray-400 text-center">
+                    Basic list rendering with keys using number values
+                </figcaption>
+            </figure>
         </section>
         
-        <section class="mb-4 md:mb-8">
-            <h2 class="font-bold text-lg md:text-2xl mb-2 md:mb-4">Example: Using Unique IDs as Keys</h2>
-            <pre class="w-full border-2 rounded-xl leading-5 text-xs text-md lg:text-xl tracking-tighter text-gray-600 dark:text-gray-300 dark:border-gray-600 dark:bg-gray-800 mb-2 md:mb-5 p-2 md:p-5"><code>function TodoList(props) {
+        <section class="mb-8" aria-labelledby="example2-heading">
+            <h2 id="example2-heading" class="font-bold text-lg md:text-2xl mb-4 md:mb-6">Example: Using Unique IDs as Keys</h2>
+            <figure>
+                <pre class="w-full border-2 rounded-xl leading-5 text-xs text-md lg:text-xl tracking-tighter text-gray-600 dark:text-gray-300 dark:border-gray-600 dark:bg-gray-800 mb-2 md:mb-5 p-2 md:p-5"><code>function TodoList(props) {
   const todos = props.todos;
   return (
     &lt;ul&gt;
@@ -117,11 +141,16 @@
 //   { id: 2, text: 'Build an app' }
 // ];
 // &lt;TodoList todos={todos} /&gt;</code></pre>
+                <figcaption class="text-sm text-gray-500 dark:text-gray-400 text-center">
+                    Using unique IDs as keys for better performance
+                </figcaption>
+            </figure>
         </section>
         
-        <section class="mb-4 md:mb-8">
-            <h2 class="font-bold text-lg md:text-2xl mb-2 md:mb-4">Example: Rendering a List with Conditional Content</h2>
-            <pre class="w-full border-2 rounded-xl leading-5 text-xs text-md lg:text-xl tracking-tighter text-gray-600 dark:text-gray-300 dark:border-gray-600 dark:bg-gray-800 mb-2 md:mb-5 p-2 md:p-5"><code>function ShoppingList(props) {
+        <section class="mb-8" aria-labelledby="example3-heading">
+            <h2 id="example3-heading" class="font-bold text-lg md:text-2xl mb-4 md:mb-6">Example: Rendering a List with Conditional Content</h2>
+            <figure>
+                <pre class="w-full border-2 rounded-xl leading-5 text-xs text-md lg:text-xl tracking-tighter text-gray-600 dark:text-gray-300 dark:border-gray-600 dark:bg-gray-800 mb-2 md:mb-5 p-2 md:p-5"><code>function ShoppingList(props) {
   return (
     &lt;ul&gt;
       {props.items.map((item) => (
@@ -135,42 +164,54 @@
     &lt;/ul&gt;
   );
 }</code></pre>
+                <figcaption class="text-sm text-gray-500 dark:text-gray-400 text-center">
+                    Conditional rendering within list items
+                </figcaption>
+            </figure>
         </section>
         
-        <section class="mb-4 md:mb-8">
-            <h2 class="font-bold text-lg md:text-2xl mb-2 md:mb-4">Interactive Exercise</h2>
+        <section class="mb-8" aria-labelledby="exercise-heading">
+            <h2 id="exercise-heading" class="font-bold text-lg md:text-2xl mb-4 md:mb-6">Interactive Exercise</h2>
             <p class="mb-4 md:mb-8 dark:text-gray-300">Create a functional React component called "TaskList" that accepts a "tasks" prop (an array of task objects). Each task object has an "id" and "text" property. Render a list of tasks where completed tasks (tasks with a "completed" property set to true) are shown with a strikethrough, and incomplete tasks are shown normally. Make sure to use the task id as the key.</p>
             
-            <label class="mb-2 font-medium dark:text-gray-300" for="answer">Your Component Code:</label><br>
-            <textarea class="w-full border-2 rounded-xl leading-5 text-xs text-md lg:text-xl tracking-tighter text-gray-600 dark:text-gray-300 dark:border-gray-600 dark:bg-gray-800 mb-2 md:mb-5 p-2 md:p-5" id="answer" rows="12" placeholder="function TaskList(props) {
-                return (
-                  &lt;ul&gt;
-                    {props.tasks.map((task) => (
-                      &lt;li key={task.id}&gt;
-                        {/* Check if task is completed */}
-                        {task.completed ? 
-                          &lt;s&gt;{task.text}&lt;/s&gt; : 
-                          &lt;span&gt;{task.text}&lt;/span&gt;
-                        }
-                      &lt;/li&gt;
-                    ))}
-                  &lt;/ul&gt;
-                );
-              }
+            <form onsubmit="checkAnswer(); return false;">
+                <label for="answer" class="block mb-2 font-medium dark:text-gray-300">Your Component Code:</label>
+                <textarea id="answer" 
+                          rows="12" 
+                          class="w-full border-2 rounded-xl leading-5 text-xs text-md lg:text-xl tracking-tighter text-gray-600 dark:text-gray-300 dark:border-gray-600 dark:bg-gray-800 mb-4 md:mb-6 p-2 md:p-5" 
+                          placeholder="function TaskList(props) {
+  return (
+    &lt;ul&gt;
+      {props.tasks.map((task) => (
+        &lt;li key={task.id}&gt;
+          {/* Check if task is completed */}
+          {task.completed ? 
+            &lt;s&gt;{task.text}&lt;/s&gt; : 
+            &lt;span&gt;{task.text}&lt;/span&gt;
+          }
+        &lt;/li&gt;
+      ))}
+    &lt;/ul&gt;
+  );
+}
 
-              // Example usage:
-              // const tasks = [
-              //   { id: 1, text: 'Learn React', completed: true },
-              //   { id: 2, text: 'Build a project', completed: false }
-              // ];
-              // &lt;TaskList tasks={tasks} /&gt;"></textarea><br>
-            
-            <button class="bg-blue-500 dark:bg-blue-600 px-3 md:px-5 h-6 md:h-10 rounded-lg flex items-center font-medium text-white" onclick="checkAnswer()">Check Answer</button>
-            
-            <div id="result" class="result"></div>
+// Example usage:
+// const tasks = [
+//   { id: 1, text: 'Learn React', completed: true },
+//   { id: 2, text: 'Build a project', completed: false }
+// ];
+// &lt;TaskList tasks={tasks} /&gt;"
+                          aria-describedby="exercise-instructions"></textarea>
+                
+                <button type="submit" class="bg-blue-500 dark:bg-blue-600 px-3 md:px-5 h-6 md:h-10 rounded-lg flex items-center font-medium text-white">
+                    Check Answer
+                </button>
+                
+                <div id="result" class="result" role="alert" aria-live="polite"></div>
+            </form>
         </section>
         
-        <nav class="navigation flex flex-col gap-3 md:gap-4">
+        <nav class="navigation flex flex-col gap-3 md:gap-4" aria-label="Page navigation">
             <div class="flex flex-col sm:flex-row justify-between gap-3">
                 <a href="conditional-rendering.html" class="bg-gray-100 dark:bg-gray-700 dark:text-gray-300 px-3 md:px-5 h-6 md:h-10 rounded-lg flex items-center font-medium justify-center sm:justify-start">
                     <span class="hidden md:inline">← Previous: Conditional Rendering</span>
@@ -205,11 +246,15 @@
                 mobileMenu.classList.add('translate-y-0', 'opacity-100', 'pointer-events-auto');
                 menuIcon.classList.add('hidden');
                 closeIcon.classList.remove('hidden');
+                mobileMenuButton.setAttribute('aria-expanded', 'true');
+                mobileMenu.setAttribute('aria-hidden', 'false');
             } else {
                 mobileMenu.classList.remove('translate-y-0', 'opacity-100', 'pointer-events-auto');
                 mobileMenu.classList.add('transform', '-translate-y-2', 'opacity-0', 'pointer-events-none');
                 menuIcon.classList.remove('hidden');
                 closeIcon.classList.add('hidden');
+                mobileMenuButton.setAttribute('aria-expanded', 'false');
+                mobileMenu.setAttribute('aria-hidden', 'true');
             }
         }
 
