@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="description" content="Learn React component lifecycle: class methods vs. hooks (useEffect, useState). Includes examples and an interactive timer exercise.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>React Fundamentals Learning Platform</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
@@ -13,79 +14,83 @@
             --nav-height: 2.5rem;
             --logo-size: 1.5rem;
         }
+        a:focus, button:focus, textarea:focus {
+            outline: 2px solid #2563eb;
+            outline-offset: 2px;
+        }
+        pre code {
+            display: block;
+        }
     </style>
 </head>
 <body>
-    <header class="border-b border-gray-200">
+    <header class="border-b border-gray-200" role="banner">
         <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
             <div class="flex items-center space-x-2">
-                <img src="../asserts/logo_forms.svg" alt="CodeCraft" class="h-6 w-auto">
+                <img src="../asserts/logo_forms.svg" alt="CodeCraft Logo" class="h-6 w-auto">
                 <span class="text-xl font-bold text-gray-900">CodeCraft</span>
             </div>
-            <nav class="flex items-center space-x-6">
+            <nav class="flex items-center space-x-6" role="navigation" aria-label="Main navigation">
                 <a href="#" class="text-gray-900 hover:text-gray-700">Catalog</a>
                 <a href="#" class="text-gray-900 hover:text-gray-700">Roadmaps</a>
                 <a href="#" class="text-gray-900 hover:text-gray-700">Discussions</a>
                 <a href="#" class="text-gray-900 hover:text-gray-700">Cheatsheets</a>
-                <button class="bg-gray-100 hover:bg-gray-200 text-gray-900 px-4 py-2 rounded-md font-bold transition-colors">Sign in</button>
+                <button 
+                    class="bg-gray-100 hover:bg-gray-200 text-gray-900 px-4 py-2 rounded-md font-bold transition-colors"
+                    aria-label="Sign in to your account"
+                >
+                    Sign in
+                </button>
             </nav>
         </div>
     </header>
 
-    <main class="max-w-4xl mx-auto px-6 py-8">
+    <main class="max-w-4xl mx-auto px-6 py-8" role="main">
         <h1 class="text-4xl font-bold text-gray-900 mb-2">Lifecycle Methods and Hooks</h1>
         
-        <section class="mb-8" id="theory" >
-             <h2 class="text-2xl font-bold text-gray-900 mb-4">Understanding Component Lifecycle and Hooks</h2>
-            <p class="text-gray-700 leading-relaxed mb-4">In class components, lifecycle methods are special methods that get 
-              called at specific points in a component's lifecycle, such as when it mounts,
-               updates, or unmounts. The main lifecycle methods are:</p>
-            <ul>
-                <li class="list-disc">componentDidMount - runs after the component is rendered to the DOM</li>
-                <li class="list-disc">componentDidUpdate - runs after the component updates</li>
-                <li class="list-disc">componentWillUnmount - runs right before the component is removed from the DOM</li>
+        <section class="mb-8" id="theory" aria-labelledby="theory-heading">
+            <h2 id="theory-heading" class="text-2xl font-bold text-gray-900 mb-4">Understanding Component Lifecycle and Hooks</h2>
+            <p class="text-gray-700 leading-relaxed mb-4">In class components, lifecycle methods are special methods that get called at
+                 specific points in a component's lifecycle, such as when it mounts, updates, or unmounts. The main lifecycle methods are:</p>
+            <ul class="list-disc pl-6 space-y-2">
+                <li><code class="bg-gray-100 px-1 rounded">componentDidMount</code> — runs after the component is rendered to the DOM</li>
+                <li><code class="bg-gray-100 px-1 rounded">componentDidUpdate</code> — runs after the component updates</li>
+                <li><code class="bg-gray-100 px-1 rounded">componentWillUnmount</code> — runs right before the component is removed from the DOM</li>
             </ul>
-            <br>
-            <p class="text-gray-700 leading-relaxed mb-4">Hooks allow you to use state and other React features in functional components.
-               The most common hooks are:</p>
-            <ul>
-                <li class="list-disc">useState - for managing state</li>
-                <li class="list-disc">useEffect - for performing side effects (replaces lifecycle methods)</li>
-                <li class="list-disc">useContext - for accessing context values</li>
+            <p class="text-gray-700 leading-relaxed mb-4 mt-4">Hooks allow you to use state and other React features in functional components.
+                The most common hooks are:</p>
+            <ul class="list-disc pl-6 space-y-2">
+                <li><code class="bg-gray-100 px-1 rounded">useState</code> — for managing state</li>
+                <li><code class="bg-gray-100 px-1 rounded">useEffect</code> — for performing side effects (replaces lifecycle methods)</li>
+                <li><code class="bg-gray-100 px-1 rounded">useContext</code> — for accessing context values</li>
             </ul>
-            <br>
-            <p class="text-gray-700 leading-relaxed mb-4">The useEffect hook can handle the same scenarios as lifecycle methods. 
-              You can run effects after render by default,
-               or conditionally run them when specific values change.</p>
+            <p class="text-gray-700 leading-relaxed mb-4 mt-4">The <code class="bg-gray-100 px-1 rounded">useEffect</code> hook can handle the same scenarios as lifecycle methods.
+                You can run effects after render by default, or conditionally run them when specific values change.</p>
         </section>
         
-        <section class="mb-8" id="example">
-             <h2 class="text-2xl font-bold text-gray-900 mb-4">Example: Using useEffect Hook</h2>
+        <section class="mb-8" id="example-basic" aria-labelledby="example-basic-heading">
+            <h2 id="example-basic-heading" class="text-2xl font-bold text-gray-900 mb-4">Example: Using useEffect Hook</h2>
             <pre class="bg-white border border-gray-300 rounded-lg p-4 overflow-x-auto"><code class="text-sm text-gray-800">import { useState, useEffect } from 'react';
+
 function Example() {
-    const [count, setCount] = useState(0);
+  const [count, setCount] = useState(0);
 
-    // Similar to componentDidMount and componentDidUpdate
-    useEffect(() => {
-      // Update the document title using the browser API
-      document.title = `You clicked ${count} times`;
-    });
+  // Similar to componentDidMount and componentDidUpdate
+  useEffect(() => {
+    document.title = `You clicked ${count} times`;
+  });
 
-    return (
-      &lt;div&gt;
-        &lt;p&gt;You clicked {count} times&lt;/p&gt;
-        &lt;button onClick={() => setCount(count + 1)}&gt;
-          Click me
-        &lt;/button&gt;
-      &lt;/div&gt;
-    );
-}
-              </code></pre>
+  return(
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick="{() => setCount(count + 1)}">Click me</button>
+    </div>
+);
+}</code></pre>
         </section>
-        
-        
-        <section class="mb-8" id="example">
-             <h2 class="text-2xl font-bold text-gray-900 mb-4">Example: useEffect with Dependency Array</h2>
+
+        <section class="mb-8" id="example-deps" aria-labelledby="example-deps-heading">
+            <h2 id="example-deps-heading" class="text-2xl font-bold text-gray-900 mb-4">Example: useEffect with Dependency Array</h2>
             <pre class="bg-white border border-gray-300 rounded-lg p-4 overflow-x-auto"><code class="text-sm text-gray-800">import { useState, useEffect } from 'react';
 
 function FriendStatus(props) {
@@ -96,10 +101,8 @@ function FriendStatus(props) {
       setIsOnline(status.isOnline);
     }
 
-    // Similar to componentDidMount
     ChatAPI.subscribeToFriendStatus(props.friend.id, handleStatusChange);
 
-    // Similar to componentWillUnmount
     return () => {
       ChatAPI.unsubscribeFromFriendStatus(props.friend.id, handleStatusChange);
     };
@@ -109,19 +112,18 @@ function FriendStatus(props) {
     return 'Loading...';
   }
   return isOnline ? 'Online' : 'Offline';
-}
-            </code></pre>
+}</code></pre>
         </section>
-        
-        <section class="mb-8" id="example">
-             <h2 class="text-2xl font-bold text-gray-900 mb-4">Example: Multiple useEffect Hooks</h2>
+
+        <section class="mb-8" id="example-multiple" aria-labelledby="example-multiple-heading">
+            <h2 id="example-multiple-heading" class="text-2xl font-bold text-gray-900 mb-4">Example: Multiple useEffect Hooks</h2>
             <pre class="bg-white border border-gray-300 rounded-lg p-4 overflow-x-auto"><code class="text-sm text-gray-800">function FriendStatusWithCounter(props) {
   const [count, setCount] = useState(0);
   const [isOnline, setIsOnline] = useState(null);
 
   useEffect(() => {
     document.title = `You clicked ${count} times`;
-  }); // No dependency array - runs after every render
+  }); // Runs after every render
 
   useEffect(() => {
     function handleStatusChange(status) {
@@ -132,78 +134,90 @@ function FriendStatus(props) {
     return () => {
       ChatAPI.unsubscribeFromFriendStatus(props.friend.id, handleStatusChange);
     };
-  }, [props.friend.id]); // Only runs when props.friend.id changes
-
-  // ... component JSX
-}
-            </code></pre>
-        </section>
-        
-        <section class="mb-8" id="exercise">
-             <h2 class="text-2xl font-bold text-gray-900 mb-4">Interactive Exercise</h2>
-            <p class="text-gray-700 leading-relaxed mb-4">Create a functional React component called "Timer" that displays a counter
-               that increments every second. Use the useEffect and useState hooks to manage the timer.
-                The component should also clean up the interval when the component is 
-                unmounted to prevent memory leaks.</p>
-            
-            <label for="answer">Your Component Code:</label>
-            <textarea class="w-full border border-gray-300 rounded-lg p-4 font-mono text-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" id="answer" rows="15" placeholder="import { useState, useEffect } from 'react';
-function Timer() {
-  const [seconds, setSeconds] = useState(0);
-  
-  useEffect(() => {
-    // Set up the interval to increment seconds
-    const interval = setInterval(() => {
-      setSeconds(prevSeconds => prevSeconds + 1);
-    }, 1000);
-    
-    // Clean up the interval when component unmounts
-    return () => {
-      clearInterval(interval);
-    };
-  }, []); // Empty dependency array means this effect runs once after mount
+  }, [props.friend.id]); // Only when props.friend.id changes
 
   return (
-    &lt;div&gt;
-      &lt;h2&gt;Timer: {seconds}s&lt;/h2&gt;
-    &lt;/div&gt;
+    <div>
+      <p>You clicked {count} times</p>
+      <p>{isOnline ? 'Online' : 'Offline'}</p>
+    </div>
   );
-}"></textarea>
-            
-            <button onclick="checkAnswer()" class="mt-4 bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-6 rounded-lg transition-colors">Check Answer</button>
-            
-            <div id="result" class="result mt-4 p-4 rounded-lg hidden"></div>
+}</code></pre>
         </section>
         
-        <nav class="navigation flex flex-row gap-4 mt-12 pt-8 border-t border-gray-200">
-            <a href="forms-and-controlled.html" class="bg-gray-100 hover:bg-gray-200 text-gray-800 py-2 px-6 rounded-md transition-colors">← Previous: Forms and Controlled Components</a>
-            <a href="../index.html" class="bg-gray-100 hover:bg-gray-200 text-gray-800 py-2 px-6 rounded-md transition-colors">Main Menu</a>
+        <section class="mb-8" id="exercise" aria-labelledby="exercise-heading">
+            <h2 id="exercise-heading" class="text-2xl font-bold text-gray-900 mb-4">Interactive Exercise</h2>
+            <p class="text-gray-700 leading-relaxed mb-4">
+                Create a functional React component called <code class="bg-gray-100 px-1 rounded">Timer</code> that displays a counter 
+                that increments every second. Use the <code>useEffect</code> and <code>useState</code> hooks to manage the timer.
+                The component should clean up the interval on unmount.
+            </p>
+            
+            <div class="mt-4">
+                <label for="answer" class="block text-gray-800 font-medium mb-2">Your Component Code:</label>
+                <textarea 
+                    id="answer" 
+                    name="answer"
+                    rows="15" 
+                    class="w-full border border-gray-300 rounded-lg p-4 font-mono text-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    placeholder="import { useState, useEffect } from 'react';&#10;function Timer() {&#10;  const [seconds, setSeconds] = useState(0);&#10;  &#10;  useEffect(() => {&#10;    const interval = setInterval(() => {&#10;      setSeconds(prev => prev + 1);&#10;    }, 1000);&#10;    &#10;    return () => clearInterval(interval);&#10;  }, []);&#10;&#10;  return <div>Timer: {seconds}s</div>;&#10;}"
+                    aria-describedby="exercise-instructions"
+                    spellcheck="false"
+                ></textarea>
+                <p id="exercise-instructions" class="sr-only">
+                    Paste your Timer component code here. It should use useState for the seconds counter and useEffect with cleanup to manage the interval.
+                </p>
+            </div>
+            
+            <button 
+                onclick="checkAnswer()" 
+                class="mt-4 bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-6 rounded-lg transition-colors"
+                aria-controls="result"
+            >
+                Check Answer
+            </button>
+            
+            <div 
+                id="result" 
+                class="result mt-4 p-4 rounded-lg hidden"
+                role="alert"
+                aria-live="polite"
+            ></div>
+        </section>
+        
+        <nav class="navigation flex flex-wrap gap-4 mt-12 pt-8 border-t border-gray-200" role="navigation" aria-label="Page navigation">
+            <a href="forms-and-controlled.html" class="bg-gray-100 hover:bg-gray-200 text-gray-800 py-2 px-6 rounded-md transition-colors">
+                ← Previous: Forms and Controlled Components
+            </a>
+            <a href="../index.html" class="bg-gray-100 hover:bg-gray-200 text-gray-800 py-2 px-6 rounded-md transition-colors">
+                Main Menu
+            </a>
         </nav>
     </main>
 
     <script>
         function checkAnswer() {
-            const answer = document.getElementById('answer').value;
+            const answer = document.getElementById('answer').value.trim();
             const resultDiv = document.getElementById('result');
             
-            // Check if the answer contains the required elements
-            if (answer.includes('Timer') && 
-                answer.includes('useState') &&
-                answer.includes('useEffect') &&
-                answer.includes('setSeconds') &&
-                answer.includes('setInterval') &&
-                answer.includes('clearInterval') &&
-                answer.includes('return') &&
-                answer.includes('[]')) {
-                
-                resultDiv.className = 'result success';
-                resultDiv.style.display = 'block';
-                resultDiv.innerHTML = 'Correct! You have successfully created a Timer component using useEffect for lifecycle management.';
+            const hasRequired = 
+                /Timer/i.test(answer) &&
+                /useState/i.test(answer) &&
+                /useEffect/i.test(answer) &&
+                /setSeconds/i.test(answer) &&
+                /setInterval/i.test(answer) &&
+                /clearInterval/i.test(answer) &&
+                /\[\s*\]/.test(answer); 
+
+            resultDiv.classList.remove('hidden');
+            if (hasRequired) {
+                resultDiv.className = 'result bg-green-100 text-green-800 mt-4 p-4 rounded-lg';
+                resultDiv.textContent = '✅ Correct! Your Timer component correctly uses useEffect with cleanup.';
             } else {
-                resultDiv.className = 'result error';
-                resultDiv.style.display = 'block';
-                resultDiv.innerHTML = 'Incorrect. Make sure your component uses useEffect with setInterval and cleanup function.';
+                resultDiv.className = 'result bg-red-100 text-red-800 mt-4 p-4 rounded-lg';
+                resultDiv.innerHTML = '❌ Incorrect. Make sure your component:<br>• Uses <code>useState</code> for <code>seconds</code><br>• Uses <code>useEffect</code> with <code>setInterval</code><br>• Returns a cleanup function with <code>clearInterval</code><br>• Has an empty dependency array <code>[]</code>';
             }
+            resultDiv.focus();
         }
     </script>
 </body>
